@@ -21,7 +21,8 @@ namespace WebApplication1.Models
             this.Тренажёры = new HashSet<Тренажёры>();
             this.Устанавливаемые_тренажёры = new HashSet<Устанавливаемые_тренажёры>();
         }
-    
+
+        [Display(Name = "Начало серийного номера")]
         public string Начало_SN { get; set; }
         [Display(Name = "Тип")]
         public string Тип_тренажёра { get; set; }

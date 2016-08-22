@@ -4,54 +4,67 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h3>МОДЕЛИ ТРЕНАЖЁРОВ</h3>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(WebApplication1.Models.Strings.Create_New, "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Тип_тренажёра)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Название_линейки)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Название_модели)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Фото)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Примечания)
-        </th>
-        <th></th>
-    </tr>
+<table class="sort" id="bigTable">
+    <thead>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Начало_SN)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Тип_тренажёра)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Название_линейки)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Название_модели)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.ImageData)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Примечания)
+            </td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Тип_тренажёра)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Название_линейки)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Название_модели)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Фото)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Примечания)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Начало_SN }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Начало_SN }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Начало_SN })
-        </td>
-    </tr>
-}
-
+            <td class="td1"> </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Начало_SN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Тип_тренажёра)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Название_линейки)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Название_модели)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageData)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Примечания)
+                </td>
+                <td class="nav nav-pills td2">
+                    @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { id = item.Начало_SN }) |
+                    @Html.ActionLink(WebApplication1.Models.Strings.details, "Details", new { id = item.Начало_SN }) |
+                    @Html.ActionLink(WebApplication1.Models.Strings.Delete, "Delete", new { id = item.Начало_SN })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+<div style="display:none;" class="nav_up" id="nav_up"></div>
+<div style="display:none;" class="nav_down" id="nav_down"></div>

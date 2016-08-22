@@ -27,6 +27,10 @@ namespace WebApplication1.Controllers
                           Controller = "Склад_запасных_деталей",
                           Action = "Index",
                           Active = string.Empty},
+            new MenuItem {Name = "Модели тренажёров",
+                          Controller = "Модели_тренажёров",
+                          Action = "Index",
+                          Active = string.Empty},
         };
 
 
