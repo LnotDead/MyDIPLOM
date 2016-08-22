@@ -11,7 +11,7 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Клиенты
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,17 +20,29 @@ namespace WebApplication1.Models
             this.Тренажёры = new HashSet<Тренажёры>();
             this.Установка_тренажёров = new HashSet<Установка_тренажёров>();
         }
-    
+
         public int Код_клиента { get; set; }
+
+        //[UIHint("TypeDropDown")]
         public string Тип { get; set; }
+
+        //List<string> typesList = new List<string> { "юр", "физ", "test" };
+
+        [Display(Name = "ФИО или Клуб")]
         public string ФИО_Название_клуба { get; set; }
+
+        [Display(Name = "Паспортные данные или реквизиты")]
         public string Паспортные_данные_Реквизиты { get; set; }
         public string Город { get; set; }
         public string Адрес { get; set; }
+
+        [Display(Name = "Основной контакт")]
         public string Основной_контакт { get; set; }
+
+        [Display(Name = "Доп. контакты")]
         public string Дополнительные_контакты { get; set; }
         public string Примечания { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Тренажёры> Тренажёры { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

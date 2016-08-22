@@ -11,7 +11,7 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Модели_тренажёров
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,8 +23,11 @@ namespace WebApplication1.Models
         }
     
         public string Начало_SN { get; set; }
+        [Display(Name = "Тип")]
         public string Тип_тренажёра { get; set; }
+        [Display(Name = "Серия")]
         public string Название_линейки { get; set; }
+        [Display(Name = "Модель")]
         public string Название_модели { get; set; }
         public string Примечания { get; set; }
         public byte[] ImageData { get; set; }
