@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_for_service_supportModelStoreContainer" CdmEntityContainer="DB_for_service_supportEntities">
+    <EntitySetMapping Name="Клиенты">
+      <EntityTypeMapping TypeName="DB_for_service_supportModel.Клиенты">
+        <MappingFragment StoreEntitySet="Клиенты">
+          <ScalarProperty Name="Код_клиента" ColumnName="Код_клиента" />
+          <ScalarProperty Name="Тип" ColumnName="Тип" />
+          <ScalarProperty Name="ФИО_Название_клуба" ColumnName="ФИО_Название_клуба" />
+          <ScalarProperty Name="Паспортные_данные_Реквизиты" ColumnName="Паспортные_данные_Реквизиты" />
+          <ScalarProperty Name="Город" ColumnName="Город" />
+          <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+          <ScalarProperty Name="Основной_контакт" ColumnName="Основной_контакт" />
+          <ScalarProperty Name="Дополнительные_контакты" ColumnName="Дополнительные_контакты" />
+          <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Модели_тренажёров">
+      <EntityTypeMapping TypeName="DB_for_service_supportModel.Модели_тренажёров">
+        <MappingFragment StoreEntitySet="Модели_тренажёров">
+          <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
+          <ScalarProperty Name="Тип_тренажёра" ColumnName="Тип_тренажёра" />
+          <ScalarProperty Name="Название_линейки" ColumnName="Название_линейки" />
+          <ScalarProperty Name="Название_модели" ColumnName="Название_модели" />
+          <ScalarProperty Name="Фото" ColumnName="Фото" />
+          <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Подходящие_запасные_детали">
+      <EntityTypeMapping TypeName="DB_for_service_supportModel.Подходящие_запасные_детали">
+        <MappingFragment StoreEntitySet="Подходящие_запасные_детали">
+          <ScalarProperty Name="Код_детали" ColumnName="Код_детали" />
+          <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ремонт">
+      <EntityTypeMapping TypeName="DB_for_service_supportModel.Ремонт">
+        <MappingFragment StoreEntitySet="Ремонт">
+          <ScalarProperty Name="ID_ремонта" ColumnName="ID_ремонта" />
+          <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
+          <ScalarProperty Name="Конец_SN" ColumnName="Конец_SN" />
+          <ScalarProperty Name="ID_сотрудника" ColumnName="ID_сотрудника" />
+          <ScalarProperty Name="Начало" ColumnName="Начало" />
+          <ScalarProperty Name="Завершение" ColumnName="Завершение" />
+          <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Склад_запасных_деталей">
+      <EntityTypeMapping TypeName="DB_for_service_supportModel.Склад_запасных_деталей">
+        <MappingFragment StoreEntitySet="Склад_запасных_деталей">
+          <ScalarProperty Name="Код_детали" ColumnName="Код_детали" />
+          <ScalarProperty Name="Количество" ColumnName="Количество" />
+          <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Состояние_сотрудника">
+      <EntityTypeMapping TypeName="DB_for_service_supportModel.Состояние_сотрудника">
+        <MappingFragment StoreEntitySet="Состояние_сотрудника">
+          <ScalarProperty Name="ID_состояния" ColumnName="ID_состояния" />
+          <ScalarProperty Name="Состояние" ColumnName="Состояние" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Сотрудники">
+      <EntityTypeMapping TypeName="DB_for_service_supportModel.Сотрудники">
+        <MappingFragment StoreEntitySet="Сотрудники">
+          <ScalarProperty Name="ID_сотрудника" ColumnName="ID_сотрудника" />
+          <ScalarProperty Name="ФИО_сотрудника" ColumnName="ФИО_сотрудника" />
+          <ScalarProperty Name="Должность" ColumnName="Должность" />
+          <ScalarProperty Name="Номер_телефона" ColumnName="Номер_телефона" />
+          <ScalarProperty Name="Логин" ColumnName="Логин" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+          <ScalarProperty Name="ID_состояния" ColumnName="ID_состояния" />
+          <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Тренажёры">
+      <EntityTypeMapping TypeName="DB_for_service_supportModel.Тренажёры">
+        <MappingFragment StoreEntitySet="Тренажёры">
+          <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
+          <ScalarProperty Name="Конец_SN" ColumnName="Конец_SN" />
+          <ScalarProperty Name="Код_клиента" ColumnName="Код_клиента" />
+          <ScalarProperty Name="Основная_гарантия" ColumnName="Основная_гарантия" />
+          <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+          <ScalarProperty Name="ID_установки" ColumnName="ID_установки" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Устанавливаемые_тренажёры">
+      <EntityTypeMapping TypeName="DB_for_service_supportModel.Устанавливаемые_тренажёры">
+        <MappingFragment StoreEntitySet="Устанавливаемые_тренажёры">
+          <ScalarProperty Name="ID_установки" ColumnName="ID_установки" />
+          <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
+          <ScalarProperty Name="Количество" ColumnName="Количество" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Установка_тренажёров">
+      <EntityTypeMapping TypeName="DB_for_service_supportModel.Установка_тренажёров">
+        <MappingFragment StoreEntitySet="Установка_тренажёров">
+          <ScalarProperty Name="ID_установки" ColumnName="ID_установки" />
+          <ScalarProperty Name="ID_сотрудника" ColumnName="ID_сотрудника" />
+          <ScalarProperty Name="Код_клиента" ColumnName="Код_клиента" />
+          <ScalarProperty Name="Дата_начала" ColumnName="Дата_начала" />
+          <ScalarProperty Name="Дата_установки" ColumnName="Дата_установки" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Установленные_детали">
+      <EntityTypeMapping TypeName="DB_for_service_supportModel.Установленные_детали">
+        <MappingFragment StoreEntitySet="Установленные_детали">
+          <ScalarProperty Name="ID_установки_детали" ColumnName="ID_установки_детали" />
+          <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
+          <ScalarProperty Name="Конец_SN" ColumnName="Конец_SN" />
+          <ScalarProperty Name="Код_детали" ColumnName="Код_детали" />
+          <ScalarProperty Name="Количество" ColumnName="Количество" />
+          <ScalarProperty Name="Дата_установки" ColumnName="Дата_установки" />
+          <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

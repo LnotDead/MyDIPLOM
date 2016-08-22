@@ -1,0 +1,74 @@
+﻿@model WebApplication1.Models.Клиенты
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3>@WebApplication1.Models.Strings.Details</h3>
+<br />
+<div>
+    <h4 style="font-weight: bold">@Html.DisplayFor(model => model.ФИО_Название_клуба)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Тип)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Тип)
+        </dd>
+
+        <dt>
+            @WebApplication1.Models.Клиенты.FIOorREKV(Model.Тип)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Паспортные_данные_Реквизиты)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Город)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Город)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Адрес)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Адрес)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Основной_контакт)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Основной_контакт)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дополнительные_контакты)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дополнительные_контакты)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Примечания)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Примечания)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { id = Model.Код_клиента }) |
+    @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
+</p>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b04298053b444e6c9764c8cab38fb365" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Клиенты" Width="2.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Модели_тренажёров" Width="1.875" PointX="9.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Подходящие_запасные_детали" Width="2.375" PointX="9" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Ремонт" Width="2" PointX="6.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Склад_запасных_деталей" Width="2.375" PointX="9" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Состояние_сотрудника" Width="2" PointX="3.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Сотрудники" Width="2" PointX="3.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Тренажёры" Width="2" PointX="6.625" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Устанавливаемые_тренажёры" Width="2.375" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Установка_тренажёров" Width="2.125" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Установленные_детали" Width="2.5" PointX="4.25" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Тренажёры__Код_к__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Установка__Код_к__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Подходящи__Начал__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Тренажёры__Начал__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Устанавли__Начал__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Подходящи__Код_д__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Установленные_де__2F10007B" ManuallyRouted="true" >
+          <ConnectorPoint PointX="9" PointY="6.2592314715038313" />
+          <ConnectorPoint PointX="8.87625" PointY="6.2592314715038313" />
+          <ConnectorPoint PointX="8.87625" PointY="6.259917569724462" />
+          <ConnectorPoint PointX="6.75" PointY="6.259917569724462" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Ремонт__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Ремонт__ID_сотру__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Сотрудник__ID_со__276EDEB3" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Установка__ID_со__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Тренажёры__ID_ус__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Установленные_де__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Устанавли__ID_ус__2C3393D0" ManuallyRouted="true" >
+          <ConnectorPoint PointX="1.3455962642741328" PointY="3.25" />
+          <ConnectorPoint PointX="1.3461423321909947" PointY="2.34568359375" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

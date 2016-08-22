@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebApplication1.Models.Клиенты>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>КЛИЕНТЫ КОМПАНИИ</h3>
+
+
+
+
+<p>
+    @Html.ActionLink(WebApplication1.Models.Strings.Create_New, "Create")
+</p>
+<table class="sort" id="bigTable">
+    <thead>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ФИО_Название_клуба)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Тип)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Город)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Адрес)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Основной_контакт)
+            </td>
+
+            <td class="td1"> </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ФИО_Название_клуба)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Тип)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Город)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Адрес)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Основной_контакт)
+                </td>
+
+                <td class="nav nav-pills td2">
+                    @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { id = item.Код_клиента }) |
+                    @Html.ActionLink(WebApplication1.Models.Strings.details, "Details", new { id = item.Код_клиента }) |
+                    @Html.ActionLink(WebApplication1.Models.Strings.Delete, "Delete", new { id = item.Код_клиента })
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>
+
+<div style="display:none;" class="nav_up" id="nav_up"></div>
+<div style="display:none;" class="nav_down" id="nav_down"></div>
+

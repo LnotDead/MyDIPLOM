@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplication1.Models.Склад_запасных_деталей>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>СКЛАД ЗАПАСНЫХ ЧАСТЕЙ</h3>
+
+<p>
+    @Html.ActionLink(WebApplication1.Models.Strings.Create_New, "Create")
+</p>
+
+<table class="sort" id="bigTable">
+    <thead>
+        <tr>
+            
+<td>@Html.DisplayNameFor(model => model.Код_детали)</td>
+            
+            
+<td>@Html.DisplayNameFor(model => model.Количество)</td>
+
+
+<td>@Html.DisplayNameFor(model => model.Примечания)</td>
+
+<td class="td1"> </td>
+
+
+</thead>
+
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Код_детали)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Количество)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Примечания)
+                </td>
+                <td class="nav nav-pills td2">
+                    @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { id = item.Код_детали }) |
+                    @Html.ActionLink(WebApplication1.Models.Strings.details, "Details", new { id = item.Код_детали }) |
+                    @Html.ActionLink(WebApplication1.Models.Strings.Delete, "Delete", new { id = item.Код_детали })
+                </td>
+            </tr>
+        }
+        </tbody>
+
+</table>
+
+<div style="display:none;" class="nav_up" id="nav_up"></div>
+<div style="display:none;" class="nav_down" id="nav_down"></div>

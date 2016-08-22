@@ -1,0 +1,912 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_for_service_supportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Клиенты">
+          <Key>
+            <PropertyRef Name="Код_клиента" />
+          </Key>
+          <Property Name="Код_клиента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Тип" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="ФИО_Название_клуба" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Паспортные_данные_Реквизиты" Type="varchar" MaxLength="300" />
+          <Property Name="Город" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Адрес" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Основной_контакт" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Дополнительные_контакты" Type="varchar" MaxLength="400" />
+          <Property Name="Примечания" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Модели_тренажёров">
+          <Key>
+            <PropertyRef Name="Начало_SN" />
+          </Key>
+          <Property Name="Начало_SN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Тип_тренажёра" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Название_линейки" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Название_модели" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Фото" Type="varchar" MaxLength="200" />
+          <Property Name="Примечания" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Подходящие_запасные_детали">
+          <Key>
+            <PropertyRef Name="Код_детали" />
+            <PropertyRef Name="Начало_SN" />
+          </Key>
+          <Property Name="Код_детали" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Начало_SN" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ремонт">
+          <Key>
+            <PropertyRef Name="ID_ремонта" />
+          </Key>
+          <Property Name="ID_ремонта" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Начало_SN" Type="varchar" MaxLength="20" />
+          <Property Name="Конец_SN" Type="varchar" MaxLength="20" />
+          <Property Name="ID_сотрудника" Type="int" />
+          <Property Name="Начало" Type="date" Nullable="false" />
+          <Property Name="Завершение" Type="date" />
+          <Property Name="Примечания" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Склад_запасных_деталей">
+          <Key>
+            <PropertyRef Name="Код_детали" />
+          </Key>
+          <Property Name="Код_детали" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Количество" Type="int" Nullable="false" />
+          <Property Name="Примечания" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Состояние_сотрудника">
+          <Key>
+            <PropertyRef Name="ID_состояния" />
+          </Key>
+          <Property Name="ID_состояния" Type="int" Nullable="false" />
+          <Property Name="Состояние" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Сотрудники">
+          <Key>
+            <PropertyRef Name="ID_сотрудника" />
+          </Key>
+          <Property Name="ID_сотрудника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ФИО_сотрудника" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Должность" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Номер_телефона" Type="varchar" MaxLength="20" />
+          <Property Name="Логин" Type="varchar" MaxLength="20" />
+          <Property Name="Пароль" Type="varchar" MaxLength="20" />
+          <Property Name="ID_состояния" Type="int" Nullable="false" />
+          <Property Name="Примечания" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Тренажёры">
+          <Key>
+            <PropertyRef Name="Начало_SN" />
+            <PropertyRef Name="Конец_SN" />
+          </Key>
+          <Property Name="Начало_SN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Конец_SN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Код_клиента" Type="int" Nullable="false" />
+          <Property Name="Основная_гарантия" Type="int" Nullable="false" />
+          <Property Name="Примечания" Type="varchar" MaxLength="1000" />
+          <Property Name="ID_установки" Type="int" />
+        </EntityType>
+        <EntityType Name="Устанавливаемые_тренажёры">
+          <Key>
+            <PropertyRef Name="ID_установки" />
+            <PropertyRef Name="Начало_SN" />
+          </Key>
+          <Property Name="ID_установки" Type="int" Nullable="false" />
+          <Property Name="Начало_SN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Количество" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Установка_тренажёров">
+          <Key>
+            <PropertyRef Name="ID_установки" />
+          </Key>
+          <Property Name="ID_установки" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_сотрудника" Type="int" Nullable="false" />
+          <Property Name="Код_клиента" Type="int" Nullable="false" />
+          <Property Name="Дата_начала" Type="date" Nullable="false" />
+          <Property Name="Дата_установки" Type="date" />
+        </EntityType>
+        <EntityType Name="Установленные_детали">
+          <Key>
+            <PropertyRef Name="ID_установки_детали" />
+          </Key>
+          <Property Name="ID_установки_детали" Type="int" Nullable="false" />
+          <Property Name="Начало_SN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Конец_SN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Код_детали" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Количество" Type="int" Nullable="false" />
+          <Property Name="Дата_установки" Type="date" Nullable="false" />
+          <Property Name="Примечания" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <Association Name="FK__Подходящи__Код_д__239E4DCF">
+          <End Role="Склад_запасных_деталей" Type="Self.Склад_запасных_деталей" Multiplicity="1" />
+          <End Role="Подходящие_запасные_детали" Type="Self.Подходящие_запасные_детали" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Склад_запасных_деталей">
+              <PropertyRef Name="Код_детали" />
+            </Principal>
+            <Dependent Role="Подходящие_запасные_детали">
+              <PropertyRef Name="Код_детали" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Подходящи__Начал__24927208">
+          <End Role="Модели_тренажёров" Type="Self.Модели_тренажёров" Multiplicity="1" />
+          <End Role="Подходящие_запасные_детали" Type="Self.Подходящие_запасные_детали" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модели_тренажёров">
+              <PropertyRef Name="Начало_SN" />
+            </Principal>
+            <Dependent Role="Подходящие_запасные_детали">
+              <PropertyRef Name="Начало_SN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ремонт__25869641">
+          <End Role="Тренажёры" Type="Self.Тренажёры" Multiplicity="0..1" />
+          <End Role="Ремонт" Type="Self.Ремонт" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тренажёры">
+              <PropertyRef Name="Конец_SN" />
+              <PropertyRef Name="Начало_SN" />
+            </Principal>
+            <Dependent Role="Ремонт">
+              <PropertyRef Name="Конец_SN" />
+              <PropertyRef Name="Начало_SN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ремонт__ID_сотру__267ABA7A">
+          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="0..1" />
+          <End Role="Ремонт" Type="Self.Ремонт" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудники">
+              <PropertyRef Name="ID_сотрудника" />
+            </Principal>
+            <Dependent Role="Ремонт">
+              <PropertyRef Name="ID_сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Сотрудник__ID_со__276EDEB3">
+          <End Role="Состояние_сотрудника" Type="Self.Состояние_сотрудника" Multiplicity="1" />
+          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Состояние_сотрудника">
+              <PropertyRef Name="ID_состояния" />
+            </Principal>
+            <Dependent Role="Сотрудники">
+              <PropertyRef Name="ID_состояния" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Тренажёры__ID_ус__286302EC">
+          <End Role="Установка_тренажёров" Type="Self.Установка_тренажёров" Multiplicity="0..1" />
+          <End Role="Тренажёры" Type="Self.Тренажёры" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Установка_тренажёров">
+              <PropertyRef Name="ID_установки" />
+            </Principal>
+            <Dependent Role="Тренажёры">
+              <PropertyRef Name="ID_установки" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Тренажёры__Код_к__29572725">
+          <End Role="Клиенты" Type="Self.Клиенты" Multiplicity="1" />
+          <End Role="Тренажёры" Type="Self.Тренажёры" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Клиенты">
+              <PropertyRef Name="Код_клиента" />
+            </Principal>
+            <Dependent Role="Тренажёры">
+              <PropertyRef Name="Код_клиента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Тренажёры__Начал__2A4B4B5E">
+          <End Role="Модели_тренажёров" Type="Self.Модели_тренажёров" Multiplicity="1" />
+          <End Role="Тренажёры" Type="Self.Тренажёры" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модели_тренажёров">
+              <PropertyRef Name="Начало_SN" />
+            </Principal>
+            <Dependent Role="Тренажёры">
+              <PropertyRef Name="Начало_SN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Устанавли__ID_ус__2C3393D0">
+          <End Role="Установка_тренажёров" Type="Self.Установка_тренажёров" Multiplicity="1" />
+          <End Role="Устанавливаемые_тренажёры" Type="Self.Устанавливаемые_тренажёры" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Установка_тренажёров">
+              <PropertyRef Name="ID_установки" />
+            </Principal>
+            <Dependent Role="Устанавливаемые_тренажёры">
+              <PropertyRef Name="ID_установки" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Устанавли__Начал__2B3F6F97">
+          <End Role="Модели_тренажёров" Type="Self.Модели_тренажёров" Multiplicity="1" />
+          <End Role="Устанавливаемые_тренажёры" Type="Self.Устанавливаемые_тренажёры" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модели_тренажёров">
+              <PropertyRef Name="Начало_SN" />
+            </Principal>
+            <Dependent Role="Устанавливаемые_тренажёры">
+              <PropertyRef Name="Начало_SN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Установка__ID_со__2D27B809">
+          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="1" />
+          <End Role="Установка_тренажёров" Type="Self.Установка_тренажёров" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудники">
+              <PropertyRef Name="ID_сотрудника" />
+            </Principal>
+            <Dependent Role="Установка_тренажёров">
+              <PropertyRef Name="ID_сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Установка__Код_к__2E1BDC42">
+          <End Role="Клиенты" Type="Self.Клиенты" Multiplicity="1" />
+          <End Role="Установка_тренажёров" Type="Self.Установка_тренажёров" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Клиенты">
+              <PropertyRef Name="Код_клиента" />
+            </Principal>
+            <Dependent Role="Установка_тренажёров">
+              <PropertyRef Name="Код_клиента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Установленные_де__2F10007B">
+          <End Role="Подходящие_запасные_детали" Type="Self.Подходящие_запасные_детали" Multiplicity="1" />
+          <End Role="Установленные_детали" Type="Self.Установленные_детали" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Подходящие_запасные_детали">
+              <PropertyRef Name="Код_детали" />
+              <PropertyRef Name="Начало_SN" />
+            </Principal>
+            <Dependent Role="Установленные_детали">
+              <PropertyRef Name="Код_детали" />
+              <PropertyRef Name="Начало_SN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Установленные_де__300424B4">
+          <End Role="Тренажёры" Type="Self.Тренажёры" Multiplicity="1" />
+          <End Role="Установленные_детали" Type="Self.Установленные_детали" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тренажёры">
+              <PropertyRef Name="Конец_SN" />
+              <PropertyRef Name="Начало_SN" />
+            </Principal>
+            <Dependent Role="Установленные_детали">
+              <PropertyRef Name="Конец_SN" />
+              <PropertyRef Name="Начало_SN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_for_service_supportModelStoreContainer">
+          <EntitySet Name="Клиенты" EntityType="Self.Клиенты" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Модели_тренажёров" EntityType="Self.Модели_тренажёров" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Подходящие_запасные_детали" EntityType="Self.Подходящие_запасные_детали" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ремонт" EntityType="Self.Ремонт" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Склад_запасных_деталей" EntityType="Self.Склад_запасных_деталей" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Состояние_сотрудника" EntityType="Self.Состояние_сотрудника" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Сотрудники" EntityType="Self.Сотрудники" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Тренажёры" EntityType="Self.Тренажёры" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Устанавливаемые_тренажёры" EntityType="Self.Устанавливаемые_тренажёры" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Установка_тренажёров" EntityType="Self.Установка_тренажёров" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Установленные_детали" EntityType="Self.Установленные_детали" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Подходящи__Код_д__239E4DCF" Association="Self.FK__Подходящи__Код_д__239E4DCF">
+            <End Role="Склад_запасных_деталей" EntitySet="Склад_запасных_деталей" />
+            <End Role="Подходящие_запасные_детали" EntitySet="Подходящие_запасные_детали" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Подходящи__Начал__24927208" Association="Self.FK__Подходящи__Начал__24927208">
+            <End Role="Модели_тренажёров" EntitySet="Модели_тренажёров" />
+            <End Role="Подходящие_запасные_детали" EntitySet="Подходящие_запасные_детали" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ремонт__25869641" Association="Self.FK__Ремонт__25869641">
+            <End Role="Тренажёры" EntitySet="Тренажёры" />
+            <End Role="Ремонт" EntitySet="Ремонт" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ремонт__ID_сотру__267ABA7A" Association="Self.FK__Ремонт__ID_сотру__267ABA7A">
+            <End Role="Сотрудники" EntitySet="Сотрудники" />
+            <End Role="Ремонт" EntitySet="Ремонт" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Сотрудник__ID_со__276EDEB3" Association="Self.FK__Сотрудник__ID_со__276EDEB3">
+            <End Role="Состояние_сотрудника" EntitySet="Состояние_сотрудника" />
+            <End Role="Сотрудники" EntitySet="Сотрудники" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Тренажёры__ID_ус__286302EC" Association="Self.FK__Тренажёры__ID_ус__286302EC">
+            <End Role="Установка_тренажёров" EntitySet="Установка_тренажёров" />
+            <End Role="Тренажёры" EntitySet="Тренажёры" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Тренажёры__Код_к__29572725" Association="Self.FK__Тренажёры__Код_к__29572725">
+            <End Role="Клиенты" EntitySet="Клиенты" />
+            <End Role="Тренажёры" EntitySet="Тренажёры" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Тренажёры__Начал__2A4B4B5E" Association="Self.FK__Тренажёры__Начал__2A4B4B5E">
+            <End Role="Модели_тренажёров" EntitySet="Модели_тренажёров" />
+            <End Role="Тренажёры" EntitySet="Тренажёры" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Устанавли__ID_ус__2C3393D0" Association="Self.FK__Устанавли__ID_ус__2C3393D0">
+            <End Role="Установка_тренажёров" EntitySet="Установка_тренажёров" />
+            <End Role="Устанавливаемые_тренажёры" EntitySet="Устанавливаемые_тренажёры" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Устанавли__Начал__2B3F6F97" Association="Self.FK__Устанавли__Начал__2B3F6F97">
+            <End Role="Модели_тренажёров" EntitySet="Модели_тренажёров" />
+            <End Role="Устанавливаемые_тренажёры" EntitySet="Устанавливаемые_тренажёры" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Установка__ID_со__2D27B809" Association="Self.FK__Установка__ID_со__2D27B809">
+            <End Role="Сотрудники" EntitySet="Сотрудники" />
+            <End Role="Установка_тренажёров" EntitySet="Установка_тренажёров" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Установка__Код_к__2E1BDC42" Association="Self.FK__Установка__Код_к__2E1BDC42">
+            <End Role="Клиенты" EntitySet="Клиенты" />
+            <End Role="Установка_тренажёров" EntitySet="Установка_тренажёров" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Установленные_де__2F10007B" Association="Self.FK__Установленные_де__2F10007B">
+            <End Role="Подходящие_запасные_детали" EntitySet="Подходящие_запасные_детали" />
+            <End Role="Установленные_детали" EntitySet="Установленные_детали" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Установленные_де__300424B4" Association="Self.FK__Установленные_де__300424B4">
+            <End Role="Тренажёры" EntitySet="Тренажёры" />
+            <End Role="Установленные_детали" EntitySet="Установленные_детали" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_for_service_supportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Клиенты">
+          <Key>
+            <PropertyRef Name="Код_клиента" />
+          </Key>
+          <Property Name="Код_клиента" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Тип" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ФИО_Название_клуба" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Паспортные_данные_Реквизиты" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Город" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Адрес" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Основной_контакт" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Дополнительные_контакты" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="Примечания" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Тренажёры" Relationship="Self.FK__Тренажёры__Код_к__29572725" FromRole="Клиенты" ToRole="Тренажёры" />
+          <NavigationProperty Name="Установка_тренажёров" Relationship="Self.FK__Установка__Код_к__2E1BDC42" FromRole="Клиенты" ToRole="Установка_тренажёров" />
+        </EntityType>
+        <EntityType Name="Модели_тренажёров">
+          <Key>
+            <PropertyRef Name="Начало_SN" />
+          </Key>
+          <Property Name="Начало_SN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Тип_тренажёра" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Название_линейки" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Название_модели" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Фото" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Примечания" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Подходящие_запасные_детали" Relationship="Self.FK__Подходящи__Начал__24927208" FromRole="Модели_тренажёров" ToRole="Подходящие_запасные_детали" />
+          <NavigationProperty Name="Тренажёры" Relationship="Self.FK__Тренажёры__Начал__2A4B4B5E" FromRole="Модели_тренажёров" ToRole="Тренажёры" />
+          <NavigationProperty Name="Устанавливаемые_тренажёры" Relationship="Self.FK__Устанавли__Начал__2B3F6F97" FromRole="Модели_тренажёров" ToRole="Устанавливаемые_тренажёры" />
+        </EntityType>
+        <EntityType Name="Подходящие_запасные_детали">
+          <Key>
+            <PropertyRef Name="Код_детали" />
+            <PropertyRef Name="Начало_SN" />
+          </Key>
+          <Property Name="Код_детали" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Начало_SN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Модели_тренажёров" Relationship="Self.FK__Подходящи__Начал__24927208" FromRole="Подходящие_запасные_детали" ToRole="Модели_тренажёров" />
+          <NavigationProperty Name="Склад_запасных_деталей" Relationship="Self.FK__Подходящи__Код_д__239E4DCF" FromRole="Подходящие_запасные_детали" ToRole="Склад_запасных_деталей" />
+          <NavigationProperty Name="Установленные_детали" Relationship="Self.FK__Установленные_де__2F10007B" FromRole="Подходящие_запасные_детали" ToRole="Установленные_детали" />
+        </EntityType>
+        <EntityType Name="Ремонт">
+          <Key>
+            <PropertyRef Name="ID_ремонта" />
+          </Key>
+          <Property Name="ID_ремонта" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Начало_SN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Конец_SN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ID_сотрудника" Type="Int32" />
+          <Property Name="Начало" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Завершение" Type="DateTime" Precision="0" />
+          <Property Name="Примечания" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Тренажёры" Relationship="Self.FK__Ремонт__25869641" FromRole="Ремонт" ToRole="Тренажёры" />
+          <NavigationProperty Name="Сотрудники" Relationship="Self.FK__Ремонт__ID_сотру__267ABA7A" FromRole="Ремонт" ToRole="Сотрудники" />
+        </EntityType>
+        <EntityType Name="Склад_запасных_деталей">
+          <Key>
+            <PropertyRef Name="Код_детали" />
+          </Key>
+          <Property Name="Код_детали" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Количество" Type="Int32" Nullable="false" />
+          <Property Name="Примечания" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Подходящие_запасные_детали" Relationship="Self.FK__Подходящи__Код_д__239E4DCF" FromRole="Склад_запасных_деталей" ToRole="Подходящие_запасные_детали" />
+        </EntityType>
+        <EntityType Name="Состояние_сотрудника">
+          <Key>
+            <PropertyRef Name="ID_состояния" />
+          </Key>
+          <Property Name="ID_состояния" Type="Int32" Nullable="false" />
+          <Property Name="Состояние" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Сотрудники" Relationship="Self.FK__Сотрудник__ID_со__276EDEB3" FromRole="Состояние_сотрудника" ToRole="Сотрудники" />
+        </EntityType>
+        <EntityType Name="Сотрудники">
+          <Key>
+            <PropertyRef Name="ID_сотрудника" />
+          </Key>
+          <Property Name="ID_сотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ФИО_сотрудника" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Должность" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Номер_телефона" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Логин" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Пароль" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ID_состояния" Type="Int32" Nullable="false" />
+          <Property Name="Примечания" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ремонт" Relationship="Self.FK__Ремонт__ID_сотру__267ABA7A" FromRole="Сотрудники" ToRole="Ремонт" />
+          <NavigationProperty Name="Состояние_сотрудника" Relationship="Self.FK__Сотрудник__ID_со__276EDEB3" FromRole="Сотрудники" ToRole="Состояние_сотрудника" />
+          <NavigationProperty Name="Установка_тренажёров" Relationship="Self.FK__Установка__ID_со__2D27B809" FromRole="Сотрудники" ToRole="Установка_тренажёров" />
+        </EntityType>
+        <EntityType Name="Тренажёры">
+          <Key>
+            <PropertyRef Name="Начало_SN" />
+            <PropertyRef Name="Конец_SN" />
+          </Key>
+          <Property Name="Начало_SN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Конец_SN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Код_клиента" Type="Int32" Nullable="false" />
+          <Property Name="Основная_гарантия" Type="Int32" Nullable="false" />
+          <Property Name="Примечания" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ID_установки" Type="Int32" />
+          <NavigationProperty Name="Клиенты" Relationship="Self.FK__Тренажёры__Код_к__29572725" FromRole="Тренажёры" ToRole="Клиенты" />
+          <NavigationProperty Name="Модели_тренажёров" Relationship="Self.FK__Тренажёры__Начал__2A4B4B5E" FromRole="Тренажёры" ToRole="Модели_тренажёров" />
+          <NavigationProperty Name="Ремонт" Relationship="Self.FK__Ремонт__25869641" FromRole="Тренажёры" ToRole="Ремонт" />
+          <NavigationProperty Name="Установка_тренажёров" Relationship="Self.FK__Тренажёры__ID_ус__286302EC" FromRole="Тренажёры" ToRole="Установка_тренажёров" />
+          <NavigationProperty Name="Установленные_детали" Relationship="Self.FK__Установленные_де__300424B4" FromRole="Тренажёры" ToRole="Установленные_детали" />
+        </EntityType>
+        <EntityType Name="Устанавливаемые_тренажёры">
+          <Key>
+            <PropertyRef Name="ID_установки" />
+            <PropertyRef Name="Начало_SN" />
+          </Key>
+          <Property Name="ID_установки" Type="Int32" Nullable="false" />
+          <Property Name="Начало_SN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Количество" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Модели_тренажёров" Relationship="Self.FK__Устанавли__Начал__2B3F6F97" FromRole="Устанавливаемые_тренажёры" ToRole="Модели_тренажёров" />
+          <NavigationProperty Name="Установка_тренажёров" Relationship="Self.FK__Устанавли__ID_ус__2C3393D0" FromRole="Устанавливаемые_тренажёры" ToRole="Установка_тренажёров" />
+        </EntityType>
+        <EntityType Name="Установка_тренажёров">
+          <Key>
+            <PropertyRef Name="ID_установки" />
+          </Key>
+          <Property Name="ID_установки" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_сотрудника" Type="Int32" Nullable="false" />
+          <Property Name="Код_клиента" Type="Int32" Nullable="false" />
+          <Property Name="Дата_начала" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Дата_установки" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Клиенты" Relationship="Self.FK__Установка__Код_к__2E1BDC42" FromRole="Установка_тренажёров" ToRole="Клиенты" />
+          <NavigationProperty Name="Сотрудники" Relationship="Self.FK__Установка__ID_со__2D27B809" FromRole="Установка_тренажёров" ToRole="Сотрудники" />
+          <NavigationProperty Name="Тренажёры" Relationship="Self.FK__Тренажёры__ID_ус__286302EC" FromRole="Установка_тренажёров" ToRole="Тренажёры" />
+          <NavigationProperty Name="Устанавливаемые_тренажёры" Relationship="Self.FK__Устанавли__ID_ус__2C3393D0" FromRole="Установка_тренажёров" ToRole="Устанавливаемые_тренажёры" />
+        </EntityType>
+        <EntityType Name="Установленные_детали">
+          <Key>
+            <PropertyRef Name="ID_установки_детали" />
+          </Key>
+          <Property Name="ID_установки_детали" Type="Int32" Nullable="false" />
+          <Property Name="Начало_SN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Конец_SN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Код_детали" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Количество" Type="Int32" Nullable="false" />
+          <Property Name="Дата_установки" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Примечания" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Подходящие_запасные_детали" Relationship="Self.FK__Установленные_де__2F10007B" FromRole="Установленные_детали" ToRole="Подходящие_запасные_детали" />
+          <NavigationProperty Name="Тренажёры" Relationship="Self.FK__Установленные_де__300424B4" FromRole="Установленные_детали" ToRole="Тренажёры" />
+        </EntityType>
+        <Association Name="FK__Тренажёры__Код_к__29572725">
+          <End Role="Клиенты" Type="Self.Клиенты" Multiplicity="1" />
+          <End Role="Тренажёры" Type="Self.Тренажёры" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Клиенты">
+              <PropertyRef Name="Код_клиента" />
+            </Principal>
+            <Dependent Role="Тренажёры">
+              <PropertyRef Name="Код_клиента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Установка__Код_к__2E1BDC42">
+          <End Role="Клиенты" Type="Self.Клиенты" Multiplicity="1" />
+          <End Role="Установка_тренажёров" Type="Self.Установка_тренажёров" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Клиенты">
+              <PropertyRef Name="Код_клиента" />
+            </Principal>
+            <Dependent Role="Установка_тренажёров">
+              <PropertyRef Name="Код_клиента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Подходящи__Начал__24927208">
+          <End Role="Модели_тренажёров" Type="Self.Модели_тренажёров" Multiplicity="1" />
+          <End Role="Подходящие_запасные_детали" Type="Self.Подходящие_запасные_детали" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модели_тренажёров">
+              <PropertyRef Name="Начало_SN" />
+            </Principal>
+            <Dependent Role="Подходящие_запасные_детали">
+              <PropertyRef Name="Начало_SN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Тренажёры__Начал__2A4B4B5E">
+          <End Role="Модели_тренажёров" Type="Self.Модели_тренажёров" Multiplicity="1" />
+          <End Role="Тренажёры" Type="Self.Тренажёры" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модели_тренажёров">
+              <PropertyRef Name="Начало_SN" />
+            </Principal>
+            <Dependent Role="Тренажёры">
+              <PropertyRef Name="Начало_SN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Устанавли__Начал__2B3F6F97">
+          <End Role="Модели_тренажёров" Type="Self.Модели_тренажёров" Multiplicity="1" />
+          <End Role="Устанавливаемые_тренажёры" Type="Self.Устанавливаемые_тренажёры" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Модели_тренажёров">
+              <PropertyRef Name="Начало_SN" />
+            </Principal>
+            <Dependent Role="Устанавливаемые_тренажёры">
+              <PropertyRef Name="Начало_SN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Подходящи__Код_д__239E4DCF">
+          <End Role="Склад_запасных_деталей" Type="Self.Склад_запасных_деталей" Multiplicity="1" />
+          <End Role="Подходящие_запасные_детали" Type="Self.Подходящие_запасные_детали" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Склад_запасных_деталей">
+              <PropertyRef Name="Код_детали" />
+            </Principal>
+            <Dependent Role="Подходящие_запасные_детали">
+              <PropertyRef Name="Код_детали" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Установленные_де__2F10007B">
+          <End Role="Подходящие_запасные_детали" Type="Self.Подходящие_запасные_детали" Multiplicity="1" />
+          <End Role="Установленные_детали" Type="Self.Установленные_детали" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Подходящие_запасные_детали">
+              <PropertyRef Name="Код_детали" />
+              <PropertyRef Name="Начало_SN" />
+            </Principal>
+            <Dependent Role="Установленные_детали">
+              <PropertyRef Name="Код_детали" />
+              <PropertyRef Name="Начало_SN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ремонт__25869641">
+          <End Role="Тренажёры" Type="Self.Тренажёры" Multiplicity="0..1" />
+          <End Role="Ремонт" Type="Self.Ремонт" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тренажёры">
+              <PropertyRef Name="Конец_SN" />
+              <PropertyRef Name="Начало_SN" />
+            </Principal>
+            <Dependent Role="Ремонт">
+              <PropertyRef Name="Конец_SN" />
+              <PropertyRef Name="Начало_SN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ремонт__ID_сотру__267ABA7A">
+          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="0..1" />
+          <End Role="Ремонт" Type="Self.Ремонт" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудники">
+              <PropertyRef Name="ID_сотрудника" />
+            </Principal>
+            <Dependent Role="Ремонт">
+              <PropertyRef Name="ID_сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Сотрудник__ID_со__276EDEB3">
+          <End Role="Состояние_сотрудника" Type="Self.Состояние_сотрудника" Multiplicity="1" />
+          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Состояние_сотрудника">
+              <PropertyRef Name="ID_состояния" />
+            </Principal>
+            <Dependent Role="Сотрудники">
+              <PropertyRef Name="ID_состояния" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Установка__ID_со__2D27B809">
+          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="1" />
+          <End Role="Установка_тренажёров" Type="Self.Установка_тренажёров" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудники">
+              <PropertyRef Name="ID_сотрудника" />
+            </Principal>
+            <Dependent Role="Установка_тренажёров">
+              <PropertyRef Name="ID_сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Тренажёры__ID_ус__286302EC">
+          <End Role="Установка_тренажёров" Type="Self.Установка_тренажёров" Multiplicity="0..1" />
+          <End Role="Тренажёры" Type="Self.Тренажёры" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Установка_тренажёров">
+              <PropertyRef Name="ID_установки" />
+            </Principal>
+            <Dependent Role="Тренажёры">
+              <PropertyRef Name="ID_установки" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Установленные_де__300424B4">
+          <End Role="Тренажёры" Type="Self.Тренажёры" Multiplicity="1" />
+          <End Role="Установленные_детали" Type="Self.Установленные_детали" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тренажёры">
+              <PropertyRef Name="Конец_SN" />
+              <PropertyRef Name="Начало_SN" />
+            </Principal>
+            <Dependent Role="Установленные_детали">
+              <PropertyRef Name="Конец_SN" />
+              <PropertyRef Name="Начало_SN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Устанавли__ID_ус__2C3393D0">
+          <End Role="Установка_тренажёров" Type="Self.Установка_тренажёров" Multiplicity="1" />
+          <End Role="Устанавливаемые_тренажёры" Type="Self.Устанавливаемые_тренажёры" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Установка_тренажёров">
+              <PropertyRef Name="ID_установки" />
+            </Principal>
+            <Dependent Role="Устанавливаемые_тренажёры">
+              <PropertyRef Name="ID_установки" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_for_service_supportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Клиенты" EntityType="Self.Клиенты" />
+          <EntitySet Name="Модели_тренажёров" EntityType="Self.Модели_тренажёров" />
+          <EntitySet Name="Подходящие_запасные_детали" EntityType="Self.Подходящие_запасные_детали" />
+          <EntitySet Name="Ремонт" EntityType="Self.Ремонт" />
+          <EntitySet Name="Склад_запасных_деталей" EntityType="Self.Склад_запасных_деталей" />
+          <EntitySet Name="Состояние_сотрудника" EntityType="Self.Состояние_сотрудника" />
+          <EntitySet Name="Сотрудники" EntityType="Self.Сотрудники" />
+          <EntitySet Name="Тренажёры" EntityType="Self.Тренажёры" />
+          <EntitySet Name="Устанавливаемые_тренажёры" EntityType="Self.Устанавливаемые_тренажёры" />
+          <EntitySet Name="Установка_тренажёров" EntityType="Self.Установка_тренажёров" />
+          <EntitySet Name="Установленные_детали" EntityType="Self.Установленные_детали" />
+          <AssociationSet Name="FK__Тренажёры__Код_к__29572725" Association="Self.FK__Тренажёры__Код_к__29572725">
+            <End Role="Клиенты" EntitySet="Клиенты" />
+            <End Role="Тренажёры" EntitySet="Тренажёры" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Установка__Код_к__2E1BDC42" Association="Self.FK__Установка__Код_к__2E1BDC42">
+            <End Role="Клиенты" EntitySet="Клиенты" />
+            <End Role="Установка_тренажёров" EntitySet="Установка_тренажёров" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Подходящи__Начал__24927208" Association="Self.FK__Подходящи__Начал__24927208">
+            <End Role="Модели_тренажёров" EntitySet="Модели_тренажёров" />
+            <End Role="Подходящие_запасные_детали" EntitySet="Подходящие_запасные_детали" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Тренажёры__Начал__2A4B4B5E" Association="Self.FK__Тренажёры__Начал__2A4B4B5E">
+            <End Role="Модели_тренажёров" EntitySet="Модели_тренажёров" />
+            <End Role="Тренажёры" EntitySet="Тренажёры" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Устанавли__Начал__2B3F6F97" Association="Self.FK__Устанавли__Начал__2B3F6F97">
+            <End Role="Модели_тренажёров" EntitySet="Модели_тренажёров" />
+            <End Role="Устанавливаемые_тренажёры" EntitySet="Устанавливаемые_тренажёры" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Подходящи__Код_д__239E4DCF" Association="Self.FK__Подходящи__Код_д__239E4DCF">
+            <End Role="Склад_запасных_деталей" EntitySet="Склад_запасных_деталей" />
+            <End Role="Подходящие_запасные_детали" EntitySet="Подходящие_запасные_детали" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Установленные_де__2F10007B" Association="Self.FK__Установленные_де__2F10007B">
+            <End Role="Подходящие_запасные_детали" EntitySet="Подходящие_запасные_детали" />
+            <End Role="Установленные_детали" EntitySet="Установленные_детали" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ремонт__25869641" Association="Self.FK__Ремонт__25869641">
+            <End Role="Тренажёры" EntitySet="Тренажёры" />
+            <End Role="Ремонт" EntitySet="Ремонт" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ремонт__ID_сотру__267ABA7A" Association="Self.FK__Ремонт__ID_сотру__267ABA7A">
+            <End Role="Сотрудники" EntitySet="Сотрудники" />
+            <End Role="Ремонт" EntitySet="Ремонт" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Сотрудник__ID_со__276EDEB3" Association="Self.FK__Сотрудник__ID_со__276EDEB3">
+            <End Role="Состояние_сотрудника" EntitySet="Состояние_сотрудника" />
+            <End Role="Сотрудники" EntitySet="Сотрудники" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Установка__ID_со__2D27B809" Association="Self.FK__Установка__ID_со__2D27B809">
+            <End Role="Сотрудники" EntitySet="Сотрудники" />
+            <End Role="Установка_тренажёров" EntitySet="Установка_тренажёров" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Тренажёры__ID_ус__286302EC" Association="Self.FK__Тренажёры__ID_ус__286302EC">
+            <End Role="Установка_тренажёров" EntitySet="Установка_тренажёров" />
+            <End Role="Тренажёры" EntitySet="Тренажёры" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Установленные_де__300424B4" Association="Self.FK__Установленные_де__300424B4">
+            <End Role="Тренажёры" EntitySet="Тренажёры" />
+            <End Role="Установленные_детали" EntitySet="Установленные_детали" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Устанавли__ID_ус__2C3393D0" Association="Self.FK__Устанавли__ID_ус__2C3393D0">
+            <End Role="Установка_тренажёров" EntitySet="Установка_тренажёров" />
+            <End Role="Устанавливаемые_тренажёры" EntitySet="Устанавливаемые_тренажёры" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_for_service_supportModelStoreContainer" CdmEntityContainer="DB_for_service_supportEntities">
+          <EntitySetMapping Name="Клиенты">
+            <EntityTypeMapping TypeName="DB_for_service_supportModel.Клиенты">
+              <MappingFragment StoreEntitySet="Клиенты">
+                <ScalarProperty Name="Код_клиента" ColumnName="Код_клиента" />
+                <ScalarProperty Name="Тип" ColumnName="Тип" />
+                <ScalarProperty Name="ФИО_Название_клуба" ColumnName="ФИО_Название_клуба" />
+                <ScalarProperty Name="Паспортные_данные_Реквизиты" ColumnName="Паспортные_данные_Реквизиты" />
+                <ScalarProperty Name="Город" ColumnName="Город" />
+                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+                <ScalarProperty Name="Основной_контакт" ColumnName="Основной_контакт" />
+                <ScalarProperty Name="Дополнительные_контакты" ColumnName="Дополнительные_контакты" />
+                <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Модели_тренажёров">
+            <EntityTypeMapping TypeName="DB_for_service_supportModel.Модели_тренажёров">
+              <MappingFragment StoreEntitySet="Модели_тренажёров">
+                <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
+                <ScalarProperty Name="Тип_тренажёра" ColumnName="Тип_тренажёра" />
+                <ScalarProperty Name="Название_линейки" ColumnName="Название_линейки" />
+                <ScalarProperty Name="Название_модели" ColumnName="Название_модели" />
+                <ScalarProperty Name="Фото" ColumnName="Фото" />
+                <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Подходящие_запасные_детали">
+            <EntityTypeMapping TypeName="DB_for_service_supportModel.Подходящие_запасные_детали">
+              <MappingFragment StoreEntitySet="Подходящие_запасные_детали">
+                <ScalarProperty Name="Код_детали" ColumnName="Код_детали" />
+                <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ремонт">
+            <EntityTypeMapping TypeName="DB_for_service_supportModel.Ремонт">
+              <MappingFragment StoreEntitySet="Ремонт">
+                <ScalarProperty Name="ID_ремонта" ColumnName="ID_ремонта" />
+                <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
+                <ScalarProperty Name="Конец_SN" ColumnName="Конец_SN" />
+                <ScalarProperty Name="ID_сотрудника" ColumnName="ID_сотрудника" />
+                <ScalarProperty Name="Начало" ColumnName="Начало" />
+                <ScalarProperty Name="Завершение" ColumnName="Завершение" />
+                <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Склад_запасных_деталей">
+            <EntityTypeMapping TypeName="DB_for_service_supportModel.Склад_запасных_деталей">
+              <MappingFragment StoreEntitySet="Склад_запасных_деталей">
+                <ScalarProperty Name="Код_детали" ColumnName="Код_детали" />
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+                <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Состояние_сотрудника">
+            <EntityTypeMapping TypeName="DB_for_service_supportModel.Состояние_сотрудника">
+              <MappingFragment StoreEntitySet="Состояние_сотрудника">
+                <ScalarProperty Name="ID_состояния" ColumnName="ID_состояния" />
+                <ScalarProperty Name="Состояние" ColumnName="Состояние" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Сотрудники">
+            <EntityTypeMapping TypeName="DB_for_service_supportModel.Сотрудники">
+              <MappingFragment StoreEntitySet="Сотрудники">
+                <ScalarProperty Name="ID_сотрудника" ColumnName="ID_сотрудника" />
+                <ScalarProperty Name="ФИО_сотрудника" ColumnName="ФИО_сотрудника" />
+                <ScalarProperty Name="Должность" ColumnName="Должность" />
+                <ScalarProperty Name="Номер_телефона" ColumnName="Номер_телефона" />
+                <ScalarProperty Name="Логин" ColumnName="Логин" />
+                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+                <ScalarProperty Name="ID_состояния" ColumnName="ID_состояния" />
+                <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Тренажёры">
+            <EntityTypeMapping TypeName="DB_for_service_supportModel.Тренажёры">
+              <MappingFragment StoreEntitySet="Тренажёры">
+                <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
+                <ScalarProperty Name="Конец_SN" ColumnName="Конец_SN" />
+                <ScalarProperty Name="Код_клиента" ColumnName="Код_клиента" />
+                <ScalarProperty Name="Основная_гарантия" ColumnName="Основная_гарантия" />
+                <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+                <ScalarProperty Name="ID_установки" ColumnName="ID_установки" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Устанавливаемые_тренажёры">
+            <EntityTypeMapping TypeName="DB_for_service_supportModel.Устанавливаемые_тренажёры">
+              <MappingFragment StoreEntitySet="Устанавливаемые_тренажёры">
+                <ScalarProperty Name="ID_установки" ColumnName="ID_установки" />
+                <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Установка_тренажёров">
+            <EntityTypeMapping TypeName="DB_for_service_supportModel.Установка_тренажёров">
+              <MappingFragment StoreEntitySet="Установка_тренажёров">
+                <ScalarProperty Name="ID_установки" ColumnName="ID_установки" />
+                <ScalarProperty Name="ID_сотрудника" ColumnName="ID_сотрудника" />
+                <ScalarProperty Name="Код_клиента" ColumnName="Код_клиента" />
+                <ScalarProperty Name="Дата_начала" ColumnName="Дата_начала" />
+                <ScalarProperty Name="Дата_установки" ColumnName="Дата_установки" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Установленные_детали">
+            <EntityTypeMapping TypeName="DB_for_service_supportModel.Установленные_детали">
+              <MappingFragment StoreEntitySet="Установленные_детали">
+                <ScalarProperty Name="ID_установки_детали" ColumnName="ID_установки_детали" />
+                <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
+                <ScalarProperty Name="Конец_SN" ColumnName="Конец_SN" />
+                <ScalarProperty Name="Код_детали" ColumnName="Код_детали" />
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+                <ScalarProperty Name="Дата_установки" ColumnName="Дата_установки" />
+                <ScalarProperty Name="Примечания" ColumnName="Примечания" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

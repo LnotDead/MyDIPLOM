@@ -1,0 +1,74 @@
+﻿@model WebApplication1.Models.Сотрудники
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Сотрудники</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ФИО_сотрудника)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ФИО_сотрудника)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Должность)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Должность)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Номер_телефона)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Номер_телефона)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Логин)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Логин)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Пароль)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Пароль)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Примечания)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Примечания)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Состояние_сотрудника.Состояние)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Состояние_сотрудника.Состояние)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_сотрудника }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<WebApplication1.Models.Тренажёры>
+
+@{
+    ViewBag.Title = "Обслуживаемые тренажёры";
+}
+
+<h3>ОБСЛУЖИВАЕМЫЕ ТРЕНАЖЁРЫ</h3>
+
+
+
+<p>
+    @Html.ActionLink(WebApplication1.Models.Strings.Create_New, "Create")
+</p>
+
+<table class="sort" id="bigTable">
+        <thead>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.SN)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Модели_тренажёров.Тип_тренажёра)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Модели_тренажёров.Название_модели)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Модели_тренажёров.Название_линейки)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Код_клиента)
+                </td>
+                <td class="td1"> </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Модели_тренажёров.Тип_тренажёра)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Модели_тренажёров.Название_модели)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Модели_тренажёров.Название_линейки)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Клиенты.ФИО_Название_клуба )
+                    </td>
+                    <td class="nav nav-pills td2">
+                        @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { part1 = item.Начало_SN, part2 = item.Конец_SN}) |
+                        @Html.ActionLink(WebApplication1.Models.Strings.details, "Details", new { part1 = item.Начало_SN, part2 = item.Конец_SN }) |
+                        @Html.ActionLink(WebApplication1.Models.Strings.Delete, "Delete", new { part1 = item.Начало_SN, part2 = item.Конец_SN })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+<div style="display:none;" class="nav_up" id="nav_up"></div>
+<div style="display:none;" class="nav_down" id="nav_down"></div>
+
+
+

@@ -1,0 +1,63 @@
+﻿@model WebApplication1.Models.Тренажёры
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3>@WebApplication1.Models.Strings.Details</h3>
+<br />
+<div>
+    <h4 style="font-weight: bold">@Html.DisplayFor(model => model.SN)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Модели_тренажёров.Тип_тренажёра)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Модели_тренажёров.Тип_тренажёра)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Модели_тренажёров.Название_модели)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Модели_тренажёров.Название_модели)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Модели_тренажёров.Название_линейки)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Модели_тренажёров.Название_линейки)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.Код_клиента, "Владелец")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Клиенты.ФИО_Название_клуба)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Основная_гарантия)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Основная_гарантия)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Примечания)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Примечания)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { part1 = Model.Начало_SN, part2 = Model.Конец_SN }) |
+    @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
+</p>

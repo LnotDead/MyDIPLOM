@@ -1,0 +1,50 @@
+﻿@model WebApplication1.Models.Установка_тренажёров
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Установка_тренажёров</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_начала)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_начала)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_установки)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_установки)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Клиенты.Тип)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Клиенты.Тип)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Сотрудники.ФИО_сотрудника)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Сотрудники.ФИО_сотрудника)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_установки }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

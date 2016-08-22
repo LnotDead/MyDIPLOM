@@ -1,0 +1,41 @@
+﻿@model WebApplication1.Models.Склад_запасных_деталей
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>@WebApplication1.Models.Strings.Deleting</h3>
+
+<h4>@WebApplication1.Models.Strings.Are_you_sure</h4>
+<br />
+<div>
+    <h4 style="font-weight: bold">@Html.DisplayFor(model => model.Код_детали)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Количество)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Количество)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Примечания)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Примечания)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value=@WebApplication1.Models.Strings.Delete class="btn btn-default btn-yellow"/> |
+            @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
+        </div>
+    }
+</div>

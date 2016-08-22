@@ -1,0 +1,16 @@
+﻿@model IEnumerable<WebApplication1.Models.MenuItem>
+
+
+    <ul class="nav nav-pills nav-stacked" style="margin: 20px 0 0 0; font-size: 16px;">
+        @foreach (var item in Model)
+        {
+            <li class="@item.Active">
+                @Html.RouteLink(item.Name,
+               new
+               {
+                   controller = item.Controller,
+                   action = item.Action
+               })
+            </li>
+        }
+    </ul>

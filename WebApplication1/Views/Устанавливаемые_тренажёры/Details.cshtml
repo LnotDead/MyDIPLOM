@@ -1,0 +1,42 @@
+﻿@model WebApplication1.Models.Устанавливаемые_тренажёры
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Устанавливаемые_тренажёры</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Количество)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Количество)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Модели_тренажёров.Тип_тренажёра)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Модели_тренажёров.Тип_тренажёра)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Установка_тренажёров.ID_установки)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Установка_тренажёров.ID_установки)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

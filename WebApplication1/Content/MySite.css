@@ -1,0 +1,76 @@
+﻿
+.page-header {
+  padding: 4px 0 0 12px;
+  margin: 0px 0px 0px 0px;
+  background-color: #1e2b33;
+  color: #eeeeee;
+}
+
+
+/* ячейки таблицы*/
+table.sort td {
+    /*padding: 0.3em 1em;*/
+    text-align:left;
+    border-collapse: separate;
+    padding: 0.75em;
+}
+
+/* заголовки таблицы*/
+table.sort thead td {
+    background-color: #f8eb81;
+    cursor: pointer;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.75em;
+    text-align: left;
+    border-collapse: separate;
+    background-color: #1e2b33; /*цвет шапки*/
+    color: #eeeeee; /*цвет текста шапки*/
+}
+
+/* заголовок отсортированного столбца*/
+table.sort thead td.curcol {
+    /*background-color: #f8eb81;*/
+    background-color: #506069;
+    /*color: #1e2b33;*/
+    color: #eeeeee;
+    text-align:left;
+    border-collapse: separate;
+}
+
+td.td1 {
+    pointer-events: none;
+}
+td.td2 a{
+    /*background-color: #999999;*/
+    color: #2c7eb1;
+}
+
+/* цвет гиперссылок*/
+a {
+    color: #f8eb81;
+}
+
+
+body {
+    background-color: #999999;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: #f9e11b;
+    color: #1e2b33;
+}
+
+h3 {
+    color: #eeeeee;
+    /*font-weight: bold;*/
+    letter-spacing: 0.5px;
+}
+
+.btn-yellow {
+        background-color: #f8eb81;
+}
+
+.btn-yellow:hover {
+        background-color: #f9e11b;
+}

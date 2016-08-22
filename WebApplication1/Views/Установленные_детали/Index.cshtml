@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebApplication1.Models.Установленные_детали>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Количество)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата_установки)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Примечания)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Подходящие_запасные_детали.Код_детали)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Тренажёры.Примечания)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Количество)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Дата_установки)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Примечания)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Подходящие_запасные_детали.Код_детали)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Тренажёры.Примечания)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_установки_детали }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_установки_детали }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_установки_детали })
+        </td>
+    </tr>
+}
+
+</table>

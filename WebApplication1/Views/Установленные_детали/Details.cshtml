@@ -1,0 +1,58 @@
+﻿@model WebApplication1.Models.Установленные_детали
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Установленные_детали</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Количество)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Количество)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_установки)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_установки)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Примечания)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Примечания)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Подходящие_запасные_детали.Код_детали)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Подходящие_запасные_детали.Код_детали)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Тренажёры.Примечания)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Тренажёры.Примечания)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_установки_детали }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

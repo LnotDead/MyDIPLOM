@@ -1,0 +1,48 @@
+﻿@model WebApplication1.Models.Устанавливаемые_тренажёры
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Устанавливаемые_тренажёры</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Количество)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Количество)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Модели_тренажёров.Тип_тренажёра)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Модели_тренажёров.Тип_тренажёра)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Установка_тренажёров.ID_установки)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Установка_тренажёров.ID_установки)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

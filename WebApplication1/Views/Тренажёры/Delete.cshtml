@@ -1,0 +1,61 @@
+﻿@model WebApplication1.Models.Тренажёры
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>@WebApplication1.Models.Strings.Deleting</h3>
+
+<h4>@WebApplication1.Models.Strings.Are_you_sure</h4>
+<br />
+<div>
+    <h4 style="font-weight: bold">@Html.DisplayFor(model => model.SN)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Модели_тренажёров.Тип_тренажёра)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Модели_тренажёров.Тип_тренажёра)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Клиенты.ФИО_Название_клуба)*@
+            @Html.LabelFor(model => model.Код_клиента, "Владелец")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Клиенты.ФИО_Название_клуба)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Основная_гарантия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Основная_гарантия)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Примечания)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Примечания)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value=@WebApplication1.Models.Strings.Delete class="btn btn-default btn-yellow" /> |
+            @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
+        </div>
+    }
+</div>
