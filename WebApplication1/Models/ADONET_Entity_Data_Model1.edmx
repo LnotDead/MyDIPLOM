@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_for_service_supportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_for_service_supportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Клиенты">
           <Key>
             <PropertyRef Name="Код_клиента" />
@@ -27,7 +27,8 @@
           <Property Name="Тип_тренажёра" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Название_линейки" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Название_модели" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Фото" Type="varchar" MaxLength="200" />
+          <Property Name="ImageData" Type="varbinary(max)" />
+          <Property Name="ImageMimeType" Type="varchar" MaxLength="50" />
           <Property Name="Примечания" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Подходящие_запасные_детали">
@@ -133,7 +134,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Подходящи__Начал__24927208">
+        <Association Name="FK__Подходящи__Начал__36B12243">
           <End Role="Модели_тренажёров" Type="Self.Модели_тренажёров" Multiplicity="1" />
           <End Role="Подходящие_запасные_детали" Type="Self.Подходящие_запасные_детали" Multiplicity="*" />
           <ReferentialConstraint>
@@ -207,7 +208,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Тренажёры__Начал__2A4B4B5E">
+        <Association Name="FK__Тренажёры__Начал__37A5467C">
           <End Role="Модели_тренажёров" Type="Self.Модели_тренажёров" Multiplicity="1" />
           <End Role="Тренажёры" Type="Self.Тренажёры" Multiplicity="*" />
           <ReferentialConstraint>
@@ -231,7 +232,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Устанавли__Начал__2B3F6F97">
+        <Association Name="FK__Устанавли__Начал__38996AB5">
           <End Role="Модели_тренажёров" Type="Self.Модели_тренажёров" Multiplicity="1" />
           <End Role="Устанавливаемые_тренажёры" Type="Self.Устанавливаемые_тренажёры" Multiplicity="*" />
           <ReferentialConstraint>
@@ -311,7 +312,7 @@
             <End Role="Склад_запасных_деталей" EntitySet="Склад_запасных_деталей" />
             <End Role="Подходящие_запасные_детали" EntitySet="Подходящие_запасные_детали" />
           </AssociationSet>
-          <AssociationSet Name="FK__Подходящи__Начал__24927208" Association="Self.FK__Подходящи__Начал__24927208">
+          <AssociationSet Name="FK__Подходящи__Начал__36B12243" Association="Self.FK__Подходящи__Начал__36B12243">
             <End Role="Модели_тренажёров" EntitySet="Модели_тренажёров" />
             <End Role="Подходящие_запасные_детали" EntitySet="Подходящие_запасные_детали" />
           </AssociationSet>
@@ -335,7 +336,7 @@
             <End Role="Клиенты" EntitySet="Клиенты" />
             <End Role="Тренажёры" EntitySet="Тренажёры" />
           </AssociationSet>
-          <AssociationSet Name="FK__Тренажёры__Начал__2A4B4B5E" Association="Self.FK__Тренажёры__Начал__2A4B4B5E">
+          <AssociationSet Name="FK__Тренажёры__Начал__37A5467C" Association="Self.FK__Тренажёры__Начал__37A5467C">
             <End Role="Модели_тренажёров" EntitySet="Модели_тренажёров" />
             <End Role="Тренажёры" EntitySet="Тренажёры" />
           </AssociationSet>
@@ -343,7 +344,7 @@
             <End Role="Установка_тренажёров" EntitySet="Установка_тренажёров" />
             <End Role="Устанавливаемые_тренажёры" EntitySet="Устанавливаемые_тренажёры" />
           </AssociationSet>
-          <AssociationSet Name="FK__Устанавли__Начал__2B3F6F97" Association="Self.FK__Устанавли__Начал__2B3F6F97">
+          <AssociationSet Name="FK__Устанавли__Начал__38996AB5" Association="Self.FK__Устанавли__Начал__38996AB5">
             <End Role="Модели_тренажёров" EntitySet="Модели_тренажёров" />
             <End Role="Устанавливаемые_тренажёры" EntitySet="Устанавливаемые_тренажёры" />
           </AssociationSet>
@@ -364,8 +365,7 @@
             <End Role="Установленные_детали" EntitySet="Установленные_детали" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_for_service_supportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -393,11 +393,12 @@
           <Property Name="Тип_тренажёра" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Название_линейки" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Название_модели" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Фото" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Примечания" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Подходящие_запасные_детали" Relationship="Self.FK__Подходящи__Начал__24927208" FromRole="Модели_тренажёров" ToRole="Подходящие_запасные_детали" />
           <NavigationProperty Name="Тренажёры" Relationship="Self.FK__Тренажёры__Начал__2A4B4B5E" FromRole="Модели_тренажёров" ToRole="Тренажёры" />
           <NavigationProperty Name="Устанавливаемые_тренажёры" Relationship="Self.FK__Устанавли__Начал__2B3F6F97" FromRole="Модели_тренажёров" ToRole="Устанавливаемые_тренажёры" />
+          <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageMimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Подходящие_запасные_детали">
           <Key>
@@ -780,11 +781,12 @@
           <EntitySetMapping Name="Модели_тренажёров">
             <EntityTypeMapping TypeName="DB_for_service_supportModel.Модели_тренажёров">
               <MappingFragment StoreEntitySet="Модели_тренажёров">
+                <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
                 <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
                 <ScalarProperty Name="Тип_тренажёра" ColumnName="Тип_тренажёра" />
                 <ScalarProperty Name="Название_линейки" ColumnName="Название_линейки" />
                 <ScalarProperty Name="Название_модели" ColumnName="Название_модели" />
-                <ScalarProperty Name="Фото" ColumnName="Фото" />
                 <ScalarProperty Name="Примечания" ColumnName="Примечания" />
               </MappingFragment>
             </EntityTypeMapping>

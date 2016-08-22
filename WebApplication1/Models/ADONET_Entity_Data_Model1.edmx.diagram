@@ -7,9 +7,9 @@
       <Diagram DiagramId="b04298053b444e6c9764c8cab38fb365" Name="Diagram1">
         <EntityTypeShape EntityType="DB_for_service_supportModel.Клиенты" Width="2.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_for_service_supportModel.Модели_тренажёров" Width="1.875" PointX="9.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_for_service_supportModel.Подходящие_запасные_детали" Width="2.375" PointX="9" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Подходящие_запасные_детали" Width="2.375" PointX="9.5" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_for_service_supportModel.Ремонт" Width="2" PointX="6.625" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_for_service_supportModel.Склад_запасных_деталей" Width="2.375" PointX="9" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_for_service_supportModel.Склад_запасных_деталей" Width="2.375" PointX="8" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_for_service_supportModel.Состояние_сотрудника" Width="2" PointX="3.75" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_for_service_supportModel.Сотрудники" Width="2" PointX="3.75" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_for_service_supportModel.Тренажёры" Width="2" PointX="6.625" PointY="3.625" IsExpanded="true" />
@@ -22,11 +22,7 @@
         <AssociationConnector Association="DB_for_service_supportModel.FK__Тренажёры__Начал__2A4B4B5E" ManuallyRouted="false" />
         <AssociationConnector Association="DB_for_service_supportModel.FK__Устанавли__Начал__2B3F6F97" ManuallyRouted="false" />
         <AssociationConnector Association="DB_for_service_supportModel.FK__Подходящи__Код_д__239E4DCF" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_for_service_supportModel.FK__Установленные_де__2F10007B" ManuallyRouted="true" >
-          <ConnectorPoint PointX="9" PointY="6.2592314715038313" />
-          <ConnectorPoint PointX="8.87625" PointY="6.2592314715038313" />
-          <ConnectorPoint PointX="8.87625" PointY="6.259917569724462" />
-          <ConnectorPoint PointX="6.75" PointY="6.259917569724462" />
+        <AssociationConnector Association="DB_for_service_supportModel.FK__Установленные_де__2F10007B" ManuallyRouted="false" >
         </AssociationConnector>
         <AssociationConnector Association="DB_for_service_supportModel.FK__Ремонт__25869641" ManuallyRouted="false" />
         <AssociationConnector Association="DB_for_service_supportModel.FK__Ремонт__ID_сотру__267ABA7A" ManuallyRouted="false" />

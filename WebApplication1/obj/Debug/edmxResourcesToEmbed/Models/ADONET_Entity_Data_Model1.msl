@@ -19,11 +19,12 @@
     <EntitySetMapping Name="Модели_тренажёров">
       <EntityTypeMapping TypeName="DB_for_service_supportModel.Модели_тренажёров">
         <MappingFragment StoreEntitySet="Модели_тренажёров">
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="ImageData" ColumnName="ImageData" />
           <ScalarProperty Name="Начало_SN" ColumnName="Начало_SN" />
           <ScalarProperty Name="Тип_тренажёра" ColumnName="Тип_тренажёра" />
           <ScalarProperty Name="Название_линейки" ColumnName="Название_линейки" />
           <ScalarProperty Name="Название_модели" ColumnName="Название_модели" />
-          <ScalarProperty Name="Фото" ColumnName="Фото" />
           <ScalarProperty Name="Примечания" ColumnName="Примечания" />
         </MappingFragment>
       </EntityTypeMapping>

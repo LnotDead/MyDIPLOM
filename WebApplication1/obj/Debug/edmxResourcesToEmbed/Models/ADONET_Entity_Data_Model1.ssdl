@@ -22,7 +22,8 @@
     <Property Name="Тип_тренажёра" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Название_линейки" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Название_модели" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Фото" Type="varchar" MaxLength="200" />
+    <Property Name="ImageData" Type="varbinary(max)" />
+    <Property Name="ImageMimeType" Type="varchar" MaxLength="50" />
     <Property Name="Примечания" Type="varchar" MaxLength="1000" />
   </EntityType>
   <EntityType Name="Подходящие_запасные_детали">
@@ -128,7 +129,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Подходящи__Начал__24927208">
+  <Association Name="FK__Подходящи__Начал__36B12243">
     <End Role="Модели_тренажёров" Type="Self.Модели_тренажёров" Multiplicity="1" />
     <End Role="Подходящие_запасные_детали" Type="Self.Подходящие_запасные_детали" Multiplicity="*" />
     <ReferentialConstraint>
@@ -202,7 +203,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Тренажёры__Начал__2A4B4B5E">
+  <Association Name="FK__Тренажёры__Начал__37A5467C">
     <End Role="Модели_тренажёров" Type="Self.Модели_тренажёров" Multiplicity="1" />
     <End Role="Тренажёры" Type="Self.Тренажёры" Multiplicity="*" />
     <ReferentialConstraint>
@@ -226,7 +227,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Устанавли__Начал__2B3F6F97">
+  <Association Name="FK__Устанавли__Начал__38996AB5">
     <End Role="Модели_тренажёров" Type="Self.Модели_тренажёров" Multiplicity="1" />
     <End Role="Устанавливаемые_тренажёры" Type="Self.Устанавливаемые_тренажёры" Multiplicity="*" />
     <ReferentialConstraint>
@@ -306,7 +307,7 @@
       <End Role="Склад_запасных_деталей" EntitySet="Склад_запасных_деталей" />
       <End Role="Подходящие_запасные_детали" EntitySet="Подходящие_запасные_детали" />
     </AssociationSet>
-    <AssociationSet Name="FK__Подходящи__Начал__24927208" Association="Self.FK__Подходящи__Начал__24927208">
+    <AssociationSet Name="FK__Подходящи__Начал__36B12243" Association="Self.FK__Подходящи__Начал__36B12243">
       <End Role="Модели_тренажёров" EntitySet="Модели_тренажёров" />
       <End Role="Подходящие_запасные_детали" EntitySet="Подходящие_запасные_детали" />
     </AssociationSet>
@@ -330,7 +331,7 @@
       <End Role="Клиенты" EntitySet="Клиенты" />
       <End Role="Тренажёры" EntitySet="Тренажёры" />
     </AssociationSet>
-    <AssociationSet Name="FK__Тренажёры__Начал__2A4B4B5E" Association="Self.FK__Тренажёры__Начал__2A4B4B5E">
+    <AssociationSet Name="FK__Тренажёры__Начал__37A5467C" Association="Self.FK__Тренажёры__Начал__37A5467C">
       <End Role="Модели_тренажёров" EntitySet="Модели_тренажёров" />
       <End Role="Тренажёры" EntitySet="Тренажёры" />
     </AssociationSet>
@@ -338,7 +339,7 @@
       <End Role="Установка_тренажёров" EntitySet="Установка_тренажёров" />
       <End Role="Устанавливаемые_тренажёры" EntitySet="Устанавливаемые_тренажёры" />
     </AssociationSet>
-    <AssociationSet Name="FK__Устанавли__Начал__2B3F6F97" Association="Self.FK__Устанавли__Начал__2B3F6F97">
+    <AssociationSet Name="FK__Устанавли__Начал__38996AB5" Association="Self.FK__Устанавли__Начал__38996AB5">
       <End Role="Модели_тренажёров" EntitySet="Модели_тренажёров" />
       <End Role="Устанавливаемые_тренажёры" EntitySet="Устанавливаемые_тренажёры" />
     </AssociationSet>

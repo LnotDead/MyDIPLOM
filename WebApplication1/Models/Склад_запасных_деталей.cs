@@ -11,7 +11,7 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Склад_запасных_деталей
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +20,6 @@ namespace WebApplication1.Models
             this.Подходящие_запасные_детали = new HashSet<Подходящие_запасные_детали>();
         }
     
-        [Display(Name = "Деталь")]
         public string Код_детали { get; set; }
         public int Количество { get; set; }
         public string Примечания { get; set; }

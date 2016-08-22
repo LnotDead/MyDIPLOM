@@ -24,11 +24,12 @@
     <Property Name="Тип_тренажёра" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Название_линейки" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Название_модели" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Фото" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Примечания" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Подходящие_запасные_детали" Relationship="Self.FK__Подходящи__Начал__24927208" FromRole="Модели_тренажёров" ToRole="Подходящие_запасные_детали" />
     <NavigationProperty Name="Тренажёры" Relationship="Self.FK__Тренажёры__Начал__2A4B4B5E" FromRole="Модели_тренажёров" ToRole="Тренажёры" />
     <NavigationProperty Name="Устанавливаемые_тренажёры" Relationship="Self.FK__Устанавли__Начал__2B3F6F97" FromRole="Модели_тренажёров" ToRole="Устанавливаемые_тренажёры" />
+    <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ImageMimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Подходящие_запасные_детали">
     <Key>
