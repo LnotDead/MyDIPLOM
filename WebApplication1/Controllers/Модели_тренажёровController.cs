@@ -87,6 +87,14 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (image.ContentLength >= 1000)
+                {
+
+                    return RedirectToAction("Index", "Клиенты");
+                }
+
+
+
                 if (image != null)
                 {
                     модели_тренажёров.ImageMimeType = image.ContentType;

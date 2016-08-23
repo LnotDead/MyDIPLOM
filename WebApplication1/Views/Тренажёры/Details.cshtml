@@ -6,7 +6,7 @@
 
 <h3>@WebApplication1.Models.Strings.Details</h3>
 <br />
-<div>
+<div class="col-md-6">
     <h4 style="font-weight: bold">@Html.DisplayFor(model => model.SN)</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -56,8 +56,29 @@
         </dd>
 
     </dl>
+
+
+    <p>
+        @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { part1 = Model.Начало_SN, part2 = Model.Конец_SN }) |
+        @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
+    </p>
+
+
 </div>
-<p>
-    @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { part1 = Model.Начало_SN, part2 = Model.Конец_SN }) |
-    @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
-</p>
+
+
+<div class="col-md-6">
+    <div class="item">
+        @if (Model.Модели_тренажёров.ImageData != null)
+        {
+            <div style="float: left; margin-right: 20px">
+                <img height="500" src="@Url.Action("GetImage", "Модели_тренажёров", new { Model.Модели_тренажёров.Начало_SN})" />
+            </div>
+        }
+
+    </div>
+</div>
+
+
+
+
