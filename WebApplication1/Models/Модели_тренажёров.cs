@@ -31,6 +31,7 @@ namespace WebApplication1.Models
         [Display(Name = "Модель")]
         public string Название_модели { get; set; }
         public string Примечания { get; set; }
+        [Display(Name = "Фото")]
         public byte[] ImageData { get; set; }
         public string ImageMimeType { get; set; }
     

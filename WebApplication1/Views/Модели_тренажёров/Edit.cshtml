@@ -14,7 +14,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Модели_тренажёров</h4>
+        <h4>Модели тренажёров</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Начало_SN)
@@ -61,42 +61,43 @@
             @Html.LabelFor(model => model.ImageData, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.ImageData, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImageData, "", new { @class = "text-danger" })*@
+            @Html.ValidationMessageFor(model => model.ImageData, "", new { @class = "text-danger" })*@
 
 
                 <div class="editor-label">
                 </div>
-                
-                    <div class="editor-field">
-                        @if (Model.ImageData == null)
-                        {
-                          @:None
+
+                <div class="editor-field">
+                    @if (Model.ImageData == null)
+                    {
+                        @:None
                         }
-                        else
-                        {
-                          <img width="150" height="150" src="@Url.Action("GetImage", "Модели_тренажёров", new { Model.Начало_SN })" />
-                        }     
-                            
-                        <div>
-                            Загрузить новое фото:
-                            <input type="file" name="Image" />
-                        </div>
-                    </div>
+                    else
+                    {
+                        <img width="150" height="150" src="@Url.Action("GetImage", "Модели_тренажёров", new { Model.Начало_SN })" />
+                    }
+                </div>
+            </div>               
+                
 
-
-            </div>
+            <div class="control-label col-md-2">
+                <b>Загрузить новое фото</b>
+            </div>                
+            <div class="col-md-10">
+                <input type="file" name="Image" />
+            </div>                                          
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value=@WebApplication1.Models.Strings.Save class="btn btn-default btn-yellow" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
 </div>
 
 @section Scripts {
