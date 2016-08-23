@@ -77,18 +77,35 @@ namespace WebApplication1.Controllers
         // POST: Модели_тренажёров/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Начало_SN,Тип_тренажёра,Название_линейки,Название_модели,Фото,Примечания")] Модели_тренажёров модели_тренажёров)
+        public async Task<ActionResult> Edit([Bind(Include = "Начало_SN,Тип_тренажёра,Название_линейки,Название_модели,Примечания, ImageData, ImageMimeType")] Модели_тренажёров модели_тренажёров, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    модели_тренажёров.ImageMimeType = image.ContentType;
+                    модели_тренажёров.ImageData = new byte[image.ContentLength];
+                    image.InputStream.Read(модели_тренажёров.ImageData, 0, image.ContentLength);
+                }
+
+
+
                 db.Entry(модели_тренажёров).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(модели_тренажёров);
         }
+
+
+
+
 
         // GET: Модели_тренажёров/Delete/5
         public async Task<ActionResult> Delete(string id)
@@ -124,5 +141,24 @@ namespace WebApplication1.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
+        //Этот метод пытается найти модель тренажёра, которая соответствует указанному
+        //в параметре началу SN.Он возвращает класс FileContentResult, когда мы
+        //хотим вернуть файл браузеру клиента, и экземпляры создаются
+        //с помощью метода File базового класса контроллера.
+
+        public FileContentResult GetImage(string Начало_SN)
+        {
+            Модели_тренажёров модели_тренажёров = db.Модели_тренажёров.FirstOrDefault(p => p.Начало_SN == Начало_SN);
+
+            if (модели_тренажёров != null)
+            { return File(модели_тренажёров.ImageData, модели_тренажёров.ImageMimeType); }
+            else
+            { return null; }
+        }
+
+
     }
 }
