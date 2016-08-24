@@ -83,30 +83,31 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Начало_SN,Тип_тренажёра,Название_линейки,Название_модели,Примечания, ImageData, ImageMimeType")] Модели_тренажёров модели_тренажёров, HttpPostedFileBase image)
+        public async Task<ActionResult> Edit([Bind(Include = "Начало_SN,Тип_тренажёра,Название_линейки,Название_модели,Примечания, ImageData, ImageMimeType")] Модели_тренажёров модели_тренажёров, HttpPostedFileBase image, string returnUrl)
         {
+
             if (ModelState.IsValid)
             {
-                if (image.ContentLength >= 1000)
-                {
-
-                    return RedirectToAction("Index", "Клиенты");
-                }
-
-
 
                 if (image != null)
                 {
+                    if (image.ContentLength > 2097152) // 2 Мб
+                    {
+                        ViewBag.Pic = "Вы пытались загрузить картинку более 2 Мб";
+                        //return Redirect(returnUrl);
+
+                        return View(модели_тренажёров);
+                    }
+
                     модели_тренажёров.ImageMimeType = image.ContentType;
                     модели_тренажёров.ImageData = new byte[image.ContentLength];
                     image.InputStream.Read(модели_тренажёров.ImageData, 0, image.ContentLength);
                 }
 
-
-
                 db.Entry(модели_тренажёров).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
+
             }
             return View(модели_тренажёров);
         }

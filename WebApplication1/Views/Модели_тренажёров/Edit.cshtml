@@ -9,11 +9,11 @@
 
 
 @using (Html.BeginForm("Edit", "Модели_тренажёров", FormMethod.Post, new { enctype = "multipart/form-data" }))
-// Без атрибута enctype браузер будет передавать только имя файла, а не его содержимое
-{
-    @Html.AntiForgeryToken()
+            // Без атрибута enctype браузер будет передавать только имя файла, а не его содержимое
+            {
+                @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+                <div class="form-horizontal">
         <h4>Модели тренажёров</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -67,7 +67,7 @@
 
                 <div class="editor-field">
                     @if (Model.ImageData == null)
-                    {
+{
                         @:Отсутствует
                         }
                     else
@@ -83,10 +83,17 @@
 
         <div class="form-group">
             <div class="control-label col-md-2">
-                <b>Загрузить новое фото</b>
+                <b>
+                    Загрузить новое фото
+                <br>
+                (до 2 Мб)
+                </b>
             </div>
             <div class="col-md-10">
                 <input type="file" name="Image" accept="image/*,image/jpeg"/>
+                <text class = "text-danger">
+                    @ViewBag.Pic
+                </text>
             </div>
         </div>
 
@@ -94,6 +101,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                @Html.Hidden("returnUrl", Request.Path) @*1 передаём в контроллер адрес для возврата*@
                 <input type="submit" value=@WebApplication1.Models.Strings.Save class="btn btn-default btn-yellow" />
             </div>
         </div>
