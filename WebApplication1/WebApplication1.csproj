@@ -426,6 +426,7 @@
     <Content Include="Views\Установленные_детали\Edit.cshtml" />
     <Content Include="Views\Установленные_детали\Index.cshtml" />
     <Content Include="Views\Menu\Main.cshtml" />
+    <Content Include="Views\Shared\_Layout_Account.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

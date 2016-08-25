@@ -15,10 +15,16 @@ namespace WebApplication1
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                url: "{controller}/{action}",
                 //defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-                defaults: new { controller = "Тренажёры", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Account", action = "Login" }
             );
+
+
+            //routes.MapRoute(
+            //    "StartRoute",
+            //    "Views/Shared/_Layout.cshtml"
+            //);
 
             routes.MapRoute(
                 "Trenajery",

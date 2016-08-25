@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebApplication1.Models;
+using System.Web.Routing;
 
 namespace WebApplication1.Controllers
 {
@@ -71,7 +72,8 @@ namespace WebApplication1.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                //return View(model);
+                Redirect("~/Shared/_Layout1212.cshtml");
             }
 
             // This doesn't count login failures towards account lockout
@@ -80,7 +82,12 @@ namespace WebApplication1.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl);
+                    //return Redirect("~/Shared/_Layout.cshtml");/////////
+                    //return RedirectToRoute("StartRoute");
+                    //return Redirect("Views/Shared/_Layout.cshtml");
+                    //return Redirect("http://localhost:43470/Views/Shared/_Layout.cshtml"); 
+                    return RedirectToAction("Index", "Тренажёры");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
