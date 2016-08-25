@@ -40,7 +40,10 @@ namespace WebApplication1.Controllers
         // GET: MainMenu
         public PartialViewResult Main(string contr = "Тренажёры")
         {
-            items.First(m => m.Controller == contr).Active = "active";
+           
+            if (items.Exists(m => m.Controller == contr))
+                 items.First(m => m.Controller == contr).Active = "active";
+
 
             return PartialView(items);
         }

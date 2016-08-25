@@ -654,7 +654,6 @@ C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\bin\Microsoft.O
 C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\bin\Microsoft.Owin.Security.Google.xml
 C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebApplication1.Content.Resource.Resource1.resources
 C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.Cache
 C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebApplication1.dll
