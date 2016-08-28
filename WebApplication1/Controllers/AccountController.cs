@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebApplication1.Models;
 using System.Web.Routing;
+using System.Collections.Generic;
 
 namespace WebApplication1.Controllers
 {
@@ -24,11 +25,30 @@ namespace WebApplication1.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager,
+                                ApplicationSignInManager signInManager,
+                                ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
         }
+
+        /////////////////////////
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+
+            private set
+            {
+                _roleManager = value;
+            }
+        }
+        /////////////////////////
+
 
         public ApplicationSignInManager SignInManager
         {
@@ -136,11 +156,19 @@ namespace WebApplication1.Controllers
             }
         }
 
+
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         //
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
+
+            List<string>  allRoles = (from x in db.Roles select x.Name).Distinct().ToList();
+
+
+            ViewBag.AllRoles = allRoles;
             return View();
         }
 
@@ -158,12 +186,14 @@ namespace WebApplication1.Controllers
                 if (result.Succeeded)
                 {
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    UserManager.AddToRole(user.Id, "Ad");
 
                     return RedirectToAction("Index", "Admin");
                 }

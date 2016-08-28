@@ -207,6 +207,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\КлиентыController.cs" />
     <Compile Include="Controllers\Модели_тренажёровController.cs" />
     <Compile Include="Controllers\Подходящие_запасные_деталиController.cs" />
@@ -435,6 +436,11 @@
     <Content Include="Views\Menu\Main.cshtml" />
     <Content Include="Views\Shared\_Layout_Account.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
