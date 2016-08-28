@@ -659,3 +659,4 @@ C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebAp
 C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebApplication1.pdb
 C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebApplication1.Migrations.DataMigration.resources

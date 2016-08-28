@@ -20,6 +20,10 @@ namespace WebApplication1
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
+            // регистрация менеджера ролей
+            // Благодаря регистрации менеджер ролей будет использовать
+            // тот же контекст данных, что и менеджер пользователей.
+            // После регистрации делаем миграцию
             app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user

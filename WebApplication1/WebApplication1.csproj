@@ -203,6 +203,7 @@
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -219,6 +220,10 @@
     <Compile Include="Controllers\Установленные_деталиController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608272102291_DataMigration.cs" />
+    <Compile Include="Migrations\201608272102291_DataMigration.Designer.cs">
+      <DependentUpon>201608272102291_DataMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -237,6 +242,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ADONET_Entity_Data_Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplicationRole.cs" />
+    <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MenuItem.cs" />
@@ -427,6 +434,7 @@
     <Content Include="Views\Установленные_детали\Index.cshtml" />
     <Content Include="Views\Menu\Main.cshtml" />
     <Content Include="Views\Shared\_Layout_Account.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -446,6 +454,9 @@
     <EmbeddedResource Include="Content\Resource\Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608272102291_DataMigration.resx">
+      <DependentUpon>201608272102291_DataMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
