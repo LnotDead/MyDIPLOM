@@ -167,7 +167,6 @@ namespace WebApplication1.Controllers
 
             List<string>  allRoles = (from x in db.Roles select x.Name).Distinct().ToList();
 
-
             ViewBag.AllRoles = allRoles;
             return View();
         }
@@ -177,11 +176,11 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, string SelectedRole, string FirstName, string SecondName, string Patronymic)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser { patronymic = Patronymic, UserName = model.Email, Email = model.Email, firstName = FirstName, userRoleName = SelectedRole, secondName = SecondName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -193,7 +192,8 @@ namespace WebApplication1.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    UserManager.AddToRole(user.Id, "Ad");
+
+                    UserManager.AddToRole(user.Id, SelectedRole);
 
                     return RedirectToAction("Index", "Admin");
                 }

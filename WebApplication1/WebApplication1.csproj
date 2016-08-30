@@ -226,6 +226,22 @@
     <Compile Include="Migrations\201608272102291_DataMigration.Designer.cs">
       <DependentUpon>201608272102291_DataMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608302055560_UserRoleName.cs" />
+    <Compile Include="Migrations\201608302055560_UserRoleName.Designer.cs">
+      <DependentUpon>201608302055560_UserRoleName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608302135447_NameAndSecName.cs" />
+    <Compile Include="Migrations\201608302135447_NameAndSecName.Designer.cs">
+      <DependentUpon>201608302135447_NameAndSecName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608302220247_Patronymic.cs" />
+    <Compile Include="Migrations\201608302220247_Patronymic.Designer.cs">
+      <DependentUpon>201608302220247_Patronymic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608302240154_FirstName.cs" />
+    <Compile Include="Migrations\201608302240154_FirstName.Designer.cs">
+      <DependentUpon>201608302240154_FirstName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ADONET_Entity_Data_Model1.Context.cs">
@@ -463,6 +479,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608272102291_DataMigration.resx">
       <DependentUpon>201608272102291_DataMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608302055560_UserRoleName.resx">
+      <DependentUpon>201608302055560_UserRoleName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608302135447_NameAndSecName.resx">
+      <DependentUpon>201608302135447_NameAndSecName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608302220247_Patronymic.resx">
+      <DependentUpon>201608302220247_Patronymic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608302240154_FirstName.resx">
+      <DependentUpon>201608302240154_FirstName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,6 +12,27 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
+        @Html.Label("Фамилия", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBox("SecondName", "", new { @class = "form-control" })
+        </div>
+    </div>
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Label("Имя", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBox("FirstName", "", new { @class = "form-control" })
+        </div>
+    </div>
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Label("Отчество", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBox("Patronymic", "", new { @class = "form-control"})
+        </div>
+    </div>
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
@@ -35,16 +56,15 @@
         @Html.Label("Права доступа", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @{
-                List<SelectListItem> typesList = new List<SelectListItem>();
+                List<SelectListItem> RoleList = new List<SelectListItem>();
 
                 foreach (var x in ViewBag.AllRoles)
                 {
-                    typesList.Add(new SelectListItem() { Text = x });
-
+                    RoleList.Add(new SelectListItem() { Text = x });
                 }
             }
 
-            @Html.DropDownList("SelectedRole", typesList, new { @class = "form-control" })
+            @Html.DropDownList("SelectedRole", RoleList, new { @class = "form-control" })
 
         </div>
     </div>
