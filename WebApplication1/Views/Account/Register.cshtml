@@ -1,82 +1,97 @@
 ﻿@model WebApplication1.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h3>@WebApplication1.Models.Strings.Reging</h3>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.Label("Фамилия", new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBox("SecondName", "", new { @class = "form-control" })
+
+    <div class="form-horizontal">
+        <h4></h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Фамилия", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBox("SecondName", "", new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.Label("Имя", new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBox("FirstName", "", new { @class = "form-control" })
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Имя", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBox("FirstName", "", new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.Label("Отчество", new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBox("Patronymic", "", new { @class = "form-control"})
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Отчество", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBox("Patronymic", "", new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
 
 
-    <div class="form-group">
-        @Html.Label("Права доступа", new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @{
-                List<SelectListItem> RoleList = new List<SelectListItem>();
+        <div class="form-group">
+            @Html.Label("Права доступа", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> RoleList = new List<SelectListItem>();
 
-                foreach (var x in ViewBag.AllRoles)
-                {
-                    RoleList.Add(new SelectListItem() { Text = x });
+                    //foreach (var x in ViewBag.AllRoles)
+                    //{
+                    //    RoleList.Add(new SelectListItem() { Text = x });
+                    //}
+
+                    RoleList.Add(new SelectListItem() { Text = "Admin" });
+                    RoleList.Add(new SelectListItem() { Text = "Engineer" });
+                    RoleList.Add(new SelectListItem() { Text = "Technician" });
                 }
-            }
 
-            @Html.DropDownList("SelectedRole", RoleList, new { @class = "form-control" })
+                @Html.DropDownList("SelectedRole", RoleList, new { @class = "form-control" })
 
+            </div>
         </div>
-    </div>
 
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default btn-yellow" value=@WebApplication1.Models.Strings.RegBtn />
+            </div>
         </div>
     </div>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+
+    <div>
+        @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
+    </div>
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
