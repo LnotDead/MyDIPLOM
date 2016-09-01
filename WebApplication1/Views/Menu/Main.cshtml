@@ -1,26 +1,40 @@
 ﻿@model IEnumerable<WebApplication1.Models.MenuItem>
 
 
-    <ul class="nav nav-pills nav-stacked" style="margin: 20px 0 0 0; font-size: 16px;">
-        @foreach (var item in Model)
+<ul class="nav nav-pills nav-stacked" style="margin: 20px 0 0 0; font-size: 16px;">
+
+
+    @{
+        if (User.IsInRole("Admin"))
         {
-            if (!User.IsInRole("admin)"))
+            foreach (var item in Model)
             {
-                if (item.Admin)
+                <li class="@item.Active">
+                    @Html.RouteLink(item.Name,
+                            new
+                            {
+                                controller = item.Controller,
+                                action = item.Action
+                            })
+                </li>
+            }
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                if (!item.Admin)
                 {
-                    continue;
+                    <li class="@item.Active">
+                        @Html.RouteLink(item.Name,
+                            new
+                            {
+                                controller = item.Controller,
+                                action = item.Action
+                            })
+                    </li>
                 }
             }
-
-            <li class="@item.Active">
-                @Html.RouteLink(item.Name,
-                new
-                {
-                    controller = item.Controller,
-                    action = item.Action
-                })
-            </li>
-            
-
         }
-    </ul>
+    }
+</ul>
