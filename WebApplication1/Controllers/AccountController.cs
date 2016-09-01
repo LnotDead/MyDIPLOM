@@ -157,7 +157,7 @@ namespace WebApplication1.Controllers
         }
 
 
-        private ApplicationDbContext db = new ApplicationDbContext();
+
 
         //
         // GET: /Account/Register
@@ -453,6 +453,21 @@ namespace WebApplication1.Controllers
             }
 
             base.Dispose(disposing);
+        }
+
+        private ApplicationDbContext db = new ApplicationDbContext();
+        public ActionResult LoginPartial()
+        {
+
+            string name = User.Identity.GetUserName();
+
+            var currentUser = (from z in db.Users select z).First(x => x.UserName == name);
+
+
+            ViewBag.Hello = currentUser.firstName + " " + currentUser.patronymic;
+
+
+            return PartialView();
         }
 
         #region Helpers
