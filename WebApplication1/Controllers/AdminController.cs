@@ -10,7 +10,6 @@ using WebApplication1.Models;
 namespace WebApplication1.Controllers
 {
 
-    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         // GET: Admin

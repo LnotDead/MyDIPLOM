@@ -2,56 +2,15 @@
 
 
     <ul class="nav nav-pills nav-stacked" style="margin: 20px 0 0 0; font-size: 16px;">
-        
-        @ViewBag.flag
-
-        
-        
-        @{
-
-            if (ViewBag.flag)
+        @foreach (var item in Model)
+        {
+            if (!User.IsInRole("admin)"))
             {
-                <li>
-                    1
-                </li>
-                <li>
-                    2
-                </li>
-                <li>
-                    3
-                </li>
-            }
-
-
-
-            foreach (var item in Model)
-            {
-
-
-
-
-
-
-                if (User.IsInRole("Admin)"))
+                if (item.Admin)
                 {
-
-                    <li class="@item.Active">
-                        @Html.RouteLink(item.Name,
-                new
-                {
-                    controller = item.Controller,
-                    action = item.Action
-                })
-                    </li>
-
-
-                    //if (item.Admin)
-                    //{
-                    //    continue;
-                    //}
+                    continue;
                 }
-
-
+            }
 
             <li class="@item.Active">
                 @Html.RouteLink(item.Name,
@@ -59,9 +18,9 @@
                 {
                     controller = item.Controller,
                     action = item.Action
-            })
+                })
             </li>
             
-        }
+
         }
     </ul>
