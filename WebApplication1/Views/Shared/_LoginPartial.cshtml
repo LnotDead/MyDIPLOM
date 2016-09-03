@@ -1,26 +1,17 @@
 ﻿@*частичное представление имени пользователя с возможностью logout*@
 
-@*@model IEnumerable <WebApplication1.Models.ApplicationUser>*@
-@model WebApplication1.Models.ApplicationUser
-
 @using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
-    @Model.firstName
+
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Model.firstName
-        </li>
         <li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        <li>
-            cdfsd @Model.firstName
-        </li>
     </ul>
     }
 }
