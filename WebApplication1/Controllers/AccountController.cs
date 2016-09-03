@@ -455,6 +455,27 @@ namespace WebApplication1.Controllers
             base.Dispose(disposing);
         }
 
+
+
+
+
+        public PartialViewResult LoginPartial()
+        {
+
+            string result = User.Identity.GetUserName();
+
+            var user = (from x in db.Users select x).First(m => m.UserName == result);
+
+
+
+            ViewBag.Hello = user.firstName + " " + user.patronymic;
+
+
+
+            return PartialView();
+        }
+
+
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

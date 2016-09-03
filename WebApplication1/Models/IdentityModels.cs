@@ -3,15 +3,20 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        [Display(Name = "Права доступа")]
         public string userRoleName { get; set; }
+        [Display(Name = "Имя")]
         public string firstName { get; set; }
+        [Display(Name = "Фамилия")]
         public string secondName { get; set; }
+        [Display(Name = "Отчество")]
         public string patronymic { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
