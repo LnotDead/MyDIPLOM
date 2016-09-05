@@ -113,13 +113,15 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Index([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,userRoleName,secondName,patronymic,firstName")] ApplicationUser model, string SelectedRole)
+        //public async Task<ActionResult> Index([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,userRoleName,secondName,patronymic,firstName")] ApplicationUser model, string SelectedRole)
+        public async Task<ActionResult> Index([Bind(Include = "Id,Email,PasswordHash,SecurityStamp,UserName,userRoleName,secondName,patronymic,firstName")] ApplicationUser model, string SelectedRole)
         {
-            if (ModelState.IsValid)
-            {
                 model.UserName = model.Email;
                 model.userRoleName = SelectedRole;
+                
 
+            if (ModelState.IsValid)
+            {
                 if (!UserManager.IsInRole(model.Id, SelectedRole))
                 {
                     UserManager.RemoveFromRoles(model.Id, UserManager.GetRoles(model.Id).ToArray());
