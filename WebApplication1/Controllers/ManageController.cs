@@ -8,6 +8,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebApplication1.Models;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
 
 namespace WebApplication1.Controllers
 {
@@ -53,6 +55,25 @@ namespace WebApplication1.Controllers
 
 
 
+
+        // GET: /Manage/Details
+        //public async Task<ActionResult> Index(ManageMessageId? message)
+        public ActionResult Details()
+        {
+
+            string currentId = User.Identity.GetUserId();
+            ApplicationUser model = (from x in db.Users select x).First(m => m.Id == currentId);
+
+            return View(model);
+
+
+        }
+
+
+
+
+
+
         private ApplicationDbContext db = new ApplicationDbContext();
         //
         // GET: /Manage/Index
@@ -87,7 +108,51 @@ namespace WebApplication1.Controllers
             return View(model);
         }
 
+        // POST: Клиенты/Index/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Index([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,userRoleName,secondName,patronymic,firstName")] ApplicationUser model, string SelectedRole)
+        {
+            if (ModelState.IsValid)
+            {
+                model.UserName = model.Email;
+                model.userRoleName = SelectedRole;
 
+                if (!UserManager.IsInRole(model.Id, SelectedRole))
+                {
+                    UserManager.RemoveFromRoles(model.Id, UserManager.GetRoles(model.Id).ToArray());
+                    UserManager.AddToRole(model.Id, model.userRoleName);
+                }
+
+                db.Entry(model).State = EntityState.Modified;
+
+
+
+                //try
+                //{
+                await db.SaveChangesAsync();
+                    
+                //}
+                //catch (DbEntityValidationException ex)
+                //{
+                //    foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                //    {
+                //        Response.Write("Object: " + validationError.Entry.Entity.ToString());
+                //        Response.Write("                ");
+                //        foreach (DbValidationError err in validationError.ValidationErrors)
+                //        {
+                //            Response.Write(err.ErrorMessage + "           ");
+                //        }
+                //    }
+                //}
+
+
+                return RedirectToAction("Details");
+            }
+            return RedirectToAction("Details");
+        }
 
 
 

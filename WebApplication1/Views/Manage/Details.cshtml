@@ -1,0 +1,60 @@
+﻿@model WebApplication1.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Информация об учётной записи</h3>
+<br />
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.secondName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.secondName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patronymic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patronymic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userRoleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userRoleName)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(WebApplication1.Models.Strings.Edit + " данные", "Index", new { id = Model.Id }) |
+    @Html.ActionLink("Поменять пароль", "ChangePassword")
+</p>

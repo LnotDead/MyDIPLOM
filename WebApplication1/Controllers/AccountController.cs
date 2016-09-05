@@ -462,9 +462,13 @@ namespace WebApplication1.Controllers
         public PartialViewResult LoginPartial()
         {
 
-            string result = User.Identity.GetUserName();
+            //string result = User.Identity.GetUserName();
 
-            var user = (from x in db.Users select x).First(m => m.UserName == result);
+            //var user = (from x in db.Users select x).First(m => m.UserName == result);
+
+            string result = User.Identity.GetUserId();
+
+            var user = (from x in db.Users select x).First(m => m.Id == result);
 
 
 

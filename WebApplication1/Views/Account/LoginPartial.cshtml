@@ -11,7 +11,7 @@
             <li>
                 @{string s = ViewBag.Hello;}
 
-                @Html.ActionLink(s, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                @Html.ActionLink(s, "Details", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
         </ul>

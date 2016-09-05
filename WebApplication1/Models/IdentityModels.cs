@@ -10,12 +10,16 @@ namespace WebApplication1.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        [Required]
         [Display(Name = "Права доступа")]
         public string userRoleName { get; set; }
+        [Required]
         [Display(Name = "Имя")]
         public string firstName { get; set; }
+        [Required]
         [Display(Name = "Фамилия")]
         public string secondName { get; set; }
+        [Required]
         [Display(Name = "Отчество")]
         public string patronymic { get; set; }
 
