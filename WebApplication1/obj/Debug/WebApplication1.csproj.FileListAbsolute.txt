@@ -664,4 +664,3 @@ C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebAp
 C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebApplication1.Migrations.Patronymic.resources
 C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebApplication1.Migrations.FirstName.resources
 C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
-C:\Mr L\IIT\MyDIPLOM!!!\Technogym_WebApplication\WebApplication1\obj\Debug\WebApplication1.Migrations.EditUser.resources

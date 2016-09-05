@@ -8,8 +8,6 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebApplication1.Models;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Validation;
 
 namespace WebApplication1.Controllers
 {
@@ -88,59 +86,6 @@ namespace WebApplication1.Controllers
 
             return View(model);
         }
-
-
-        // POST: Клиенты/Index/
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public async Task<ActionResult> Index([Bind(Include = "Id,secondName,firstName,patronymic,Email,PasswordHash,SecurityStamp")] ApplicationUser model, string SelectedRole)
-        {
-            if (ModelState.IsValid)
-            {
-                IList<string> temp = UserManager.GetRoles(model.Id);
-                UserManager.RemoveFromRole(model.Id, temp[0]);
-
-                model.userRoleName = SelectedRole;
-                UserManager.AddToRole(model.Id, SelectedRole);
-                model.UserName = model.Email;
-
-                db.Entry(model).State = EntityState.Modified;
-
-
-                try
-                {
-                    await db.SaveChangesAsync();
-                }
-
-
-                catch (DbEntityValidationException ex)
-                {
-                    foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
-                    {
-                        Response.Write("Object: " + validationError.Entry.Entity.ToString());
-                        Response.Write("                ");
-                        foreach (DbValidationError err in validationError.ValidationErrors)
-                        {
-                            Response.Write(err.ErrorMessage + "           ");
-
-                            Console.WriteLine("- Property: \"{0}\", Value: \"{1}\", Error: \"{2}\"",
-                            err.PropertyName,
-                            validationError.Entry.CurrentValues.GetValue<object>(err.PropertyName),
-                            err.ErrorMessage);
-                        }
-                    }
-                }
-
-
-
-                return RedirectToAction("Index", "Admin");
-            }
-            return View(model);
-        }
-
-
 
 
 

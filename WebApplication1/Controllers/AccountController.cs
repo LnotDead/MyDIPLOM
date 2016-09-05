@@ -468,7 +468,7 @@ namespace WebApplication1.Controllers
 
 
 
-            ViewBag.Hello = "Пользователь " + user.firstName + " " + user.patronymic;
+            ViewBag.Hello = user.firstName + " " + user.patronymic;
 
 
 

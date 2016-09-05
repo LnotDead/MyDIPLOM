@@ -242,10 +242,6 @@
     <Compile Include="Migrations\201608302240154_FirstName.Designer.cs">
       <DependentUpon>201608302240154_FirstName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609042316105_EditUser.cs" />
-    <Compile Include="Migrations\201609042316105_EditUser.Designer.cs">
-      <DependentUpon>201609042316105_EditUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ADONET_Entity_Data_Model1.Context.cs">
@@ -496,9 +492,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608302240154_FirstName.resx">
       <DependentUpon>201608302240154_FirstName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609042316105_EditUser.resx">
-      <DependentUpon>201609042316105_EditUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
