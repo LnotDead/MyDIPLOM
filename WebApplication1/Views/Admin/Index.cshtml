@@ -1,0 +1,43 @@
+﻿@using WebApplication1.Models
+@model IEnumerable<ApplicationUser> 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>ЗАРЕГИСТРИРОВАННЫЕ ПОЛЬЗОВАТЕЛИ</h3>
+
+
+
+<p>
+    @Html.ActionLink(WebApplication1.Models.Strings.RegNew, "Register", "Account")
+</p>
+        <table class="sort" id="bigTable">
+            <thead>
+                <tr>
+                    <td>ФИО пользователя</td>
+                    <td>Email</td>
+                    <td>Права доступа</td>
+                    <td class="td1"> </td>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (ApplicationUser user in Model)
+                    {
+
+                        <tr>
+                            <td>@user.secondName @user.firstName @user.patronymic</td>
+                            <td>@user.Email</td>
+                            <td>@user.userRoleName</td>
+
+                            <td class="nav nav-pills td2">
+                                @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { id = user.Id }) |
+                                @Html.ActionLink(WebApplication1.Models.Strings.Delete, "Delete", new { id = user.Id })
+                            </td>
+                        </tr>
+                    }
+            </tbody>
+</table>
+
+<div style="display:none;" class="nav_up" id="nav_up"></div>
+<div style="display:none;" class="nav_down" id="nav_down"></div>
