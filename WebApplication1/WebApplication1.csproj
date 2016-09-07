@@ -302,6 +302,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-WebApplication1-666.mdf" />
+    <Content Include="App_Data\aspnet-WebApplication1-666_log.ldf">
+      <DependentUpon>aspnet-WebApplication1-666.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\DB_for_service_support.mdf" />
+    <Content Include="App_Data\DB_for_service_support_log.ldf">
+      <DependentUpon>DB_for_service_support.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\component.css" />
@@ -460,9 +468,7 @@
     <Content Include="Views\Account\LoginPartial.cshtml" />
     <Content Include="Views\Manage\Details.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
