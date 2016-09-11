@@ -7,6 +7,7 @@ namespace WebApplication1.Models
     {
         [Required]
         [Display(Name = "Email")]
+        [EmailAddress]
         public string Email { get; set; }
     }
 
@@ -70,15 +71,30 @@ namespace WebApplication1.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} должен содержать минимум {2} символов", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Повторите пароль")]
+        [Compare("Password", ErrorMessage = "Пароль и повторение пароля не совпадают")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Права доступа")]
+        public string userRoleName { get; set; }
+        [Required]
+        [RegularExpression("^[А-Я][а-я]+$", ErrorMessage = "Неверный формат. Вводите имя кириллицей с заглавной буквы без пробелов")]
+        [Display(Name = "Имя")]
+        public string firstName { get; set; }
+        [Required]
+        [RegularExpression("^[А-Я][а-я]+(-[А-Я][а-я]+)?$", ErrorMessage = "Неверный формат. Вводите фамилию кириллицей с заглавной буквы")]
+        [Display(Name = "Фамилия")]
+        public string secondName { get; set; }
+        [Required]
+        [RegularExpression("^[А-Я][а-я]+$", ErrorMessage = "Неверный формат. Вводите отчество кириллицей с заглавной буквы без пробелов")]
+        [Display(Name = "Отчество")]
+        public string patronymic { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -91,11 +107,11 @@ namespace WebApplication1.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Повторите пароль")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
