@@ -15,13 +15,16 @@
     <thead>
         <tr>
             
-<td>@Html.DisplayNameFor(model => model.Код_детали)</td>
+            <td>@Html.DisplayNameFor(model => model.Код_детали)</td>
             
             
-<td>@Html.DisplayNameFor(model => model.Количество)</td>
+            <td>@Html.DisplayNameFor(model => model.Количество)</td>
 
 
-<td>@Html.DisplayNameFor(model => model.Примечания)</td>
+            <td>@Html.DisplayNameFor(model => model.Плановый_запас)</td>
+
+
+            <td>@Html.DisplayNameFor(model => model.Примечания)</td>
 
 <td class="td1"> </td>
 
@@ -38,6 +41,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Количество)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Плановый_запас)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Примечания)

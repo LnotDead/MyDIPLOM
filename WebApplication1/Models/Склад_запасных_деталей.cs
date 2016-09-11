@@ -24,6 +24,8 @@ namespace WebApplication1.Models
         public string Код_детали { get; set; }
         public int Количество { get; set; }
         public string Примечания { get; set; }
+        [Display(Name = "Плановый запас")]
+        public Nullable<int> Плановый_запас { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Подходящие_запасные_детали> Подходящие_запасные_детали { get; set; }

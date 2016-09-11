@@ -64,6 +64,7 @@
     <Property Name="Количество" Type="Int32" Nullable="false" />
     <Property Name="Примечания" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Подходящие_запасные_детали" Relationship="Self.FK__Подходящи__Код_д__239E4DCF" FromRole="Склад_запасных_деталей" ToRole="Подходящие_запасные_детали" />
+    <Property Name="Плановый_запас" Type="Int32" />
   </EntityType>
   <EntityType Name="Состояние_сотрудника">
     <Key>

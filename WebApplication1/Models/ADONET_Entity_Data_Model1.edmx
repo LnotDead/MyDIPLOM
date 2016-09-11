@@ -58,6 +58,7 @@
           <Property Name="Код_детали" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Количество" Type="int" Nullable="false" />
           <Property Name="Примечания" Type="varchar" MaxLength="200" />
+          <Property Name="Плановый_запас" Type="int" />
         </EntityType>
         <EntityType Name="Состояние_сотрудника">
           <Key>
@@ -433,6 +434,7 @@
           <Property Name="Количество" Type="Int32" Nullable="false" />
           <Property Name="Примечания" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Подходящие_запасные_детали" Relationship="Self.FK__Подходящи__Код_д__239E4DCF" FromRole="Склад_запасных_деталей" ToRole="Подходящие_запасные_детали" />
+          <Property Name="Плановый_запас" Type="Int32" />
         </EntityType>
         <EntityType Name="Состояние_сотрудника">
           <Key>
@@ -815,6 +817,7 @@
           <EntitySetMapping Name="Склад_запасных_деталей">
             <EntityTypeMapping TypeName="DB_for_service_supportModel.Склад_запасных_деталей">
               <MappingFragment StoreEntitySet="Склад_запасных_деталей">
+                <ScalarProperty Name="Плановый_запас" ColumnName="Плановый_запас" />
                 <ScalarProperty Name="Код_детали" ColumnName="Код_детали" />
                 <ScalarProperty Name="Количество" ColumnName="Количество" />
                 <ScalarProperty Name="Примечания" ColumnName="Примечания" />

@@ -47,7 +47,7 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Код_детали,Количество,Примечания")] Склад_запасных_деталей склад_запасных_деталей)
+        public async Task<ActionResult> Create([Bind(Include = "Код_детали,Количество,Примечания,Плановый_запас")] Склад_запасных_деталей склад_запасных_деталей)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Код_детали,Количество,Примечания")] Склад_запасных_деталей склад_запасных_деталей)
+        public async Task<ActionResult> Edit([Bind(Include = "Код_детали,Количество,Примечания,Плановый_запас")] Склад_запасных_деталей склад_запасных_деталей)
         {
             if (ModelState.IsValid)
             {

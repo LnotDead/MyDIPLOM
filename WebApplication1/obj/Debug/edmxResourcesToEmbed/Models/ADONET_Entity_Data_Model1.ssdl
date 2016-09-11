@@ -53,6 +53,7 @@
     <Property Name="Код_детали" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Количество" Type="int" Nullable="false" />
     <Property Name="Примечания" Type="varchar" MaxLength="200" />
+    <Property Name="Плановый_запас" Type="int" />
   </EntityType>
   <EntityType Name="Состояние_сотрудника">
     <Key>

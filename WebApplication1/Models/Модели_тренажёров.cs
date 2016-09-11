@@ -34,7 +34,7 @@ namespace WebApplication1.Models
         [Display(Name = "Фото")]
         public byte[] ImageData { get; set; }
         public string ImageMimeType { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Подходящие_запасные_детали> Подходящие_запасные_детали { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
