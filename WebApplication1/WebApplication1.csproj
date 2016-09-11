@@ -467,6 +467,7 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Account\LoginPartial.cshtml" />
     <Content Include="Views\Manage\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

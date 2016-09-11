@@ -108,7 +108,7 @@ namespace WebApplication1.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Неверный логин и/или пароль");
                     return View(model);
             }
         }
@@ -151,7 +151,7 @@ namespace WebApplication1.Controllers
                     return View("Lockout");
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid code.");
+                    ModelState.AddModelError("", "Неверный пароль");
                     return View(model);
             }
         }
@@ -171,38 +171,88 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        ////
+        ////// POST: /Account/Register
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Register(RegisterViewModel model, string SelectedRole, string FirstName, string SecondName, string Patronymic)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = new ApplicationUser { patronymic = Patronymic, UserName = model.Email, Email = model.Email, firstName = FirstName, userRoleName = SelectedRole, secondName = SecondName };
+        //        var result = await UserManager.CreateAsync(user, model.Password);
+        //        if (result.Succeeded)
+        //        {
+        //            //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
+        //            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+        //            // Send an email with this link
+        //            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+        //            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+        //            // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+
+        //            UserManager.AddToRole(user.Id, SelectedRole);
+
+        //            return RedirectToAction("Index", "Admin");
+        //        }
+        //        AddErrors(result);
+        //    }
+
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
+
+
         //
-        // POST: /Account/Register
+        //// POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model, string SelectedRole, string FirstName, string SecondName, string Patronymic)
+        public async Task<ActionResult> Register(RegisterViewModel model, string SelectedRole)
         {
-            if (ModelState.IsValid)
+
+            if (!(from x in db.Users select x).Any(m => m.Email == model.Email))
             {
-                var user = new ApplicationUser { patronymic = Patronymic, UserName = model.Email, Email = model.Email, firstName = FirstName, userRoleName = SelectedRole, secondName = SecondName };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+
+
+                if (ModelState.IsValid)
                 {
-                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    var user = new ApplicationUser
+                    {
+                        patronymic = model.patronymic,
+                        UserName = model.Email,
+                        Email = model.Email,
+                        firstName = model.firstName,
+                        userRoleName = SelectedRole,
+                        secondName = model.secondName
+                    };
 
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        UserManager.AddToRole(user.Id, SelectedRole);
 
-
-                    UserManager.AddToRole(user.Id, SelectedRole);
-
-                    return RedirectToAction("Index", "Admin");
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    AddErrors(result);
                 }
-                AddErrors(result);
             }
-
+            else
+            {
+                List<string> allRoles = (from x in db.Roles select x.Name).Distinct().ToList();
+                ViewBag.AllRoles = allRoles;
+                ModelState.AddModelError("Email", "Пользователь с указанным Email уже зарегистрирован!");
+            }
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
+
+
+
 
         //
         // GET: /Account/ConfirmEmail
