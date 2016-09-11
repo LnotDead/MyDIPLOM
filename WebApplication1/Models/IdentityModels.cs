@@ -13,15 +13,12 @@ namespace WebApplication1.Models
         [Display(Name = "Права доступа")]
         public string userRoleName { get; set; }
         [Required]
-        [RegularExpression("^[А-Я][а-я]+$", ErrorMessage = "Неверный формат. Вводите имя кириллицей с заглавной буквы без пробелов")]
         [Display(Name = "Имя")]
         public string firstName { get; set; }
         [Required]
-        [RegularExpression("^[А-Я][а-я]+(-[А-Я][а-я]+)?$", ErrorMessage = "Неверный формат. Вводите фамилию кириллицей с заглавной буквы")]
         [Display(Name = "Фамилия")]
         public string secondName { get; set; }
         [Required]
-        [RegularExpression("^[А-Я][а-я]+$", ErrorMessage = "Неверный формат. Вводите отчество кириллицей с заглавной буквы без пробелов")]
         [Display(Name = "Отчество")]
         public string patronymic { get; set; }
 
