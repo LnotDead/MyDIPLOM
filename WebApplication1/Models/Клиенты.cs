@@ -43,6 +43,25 @@ namespace WebApplication1.Models
         public string Дополнительные_контакты { get; set; }
         public string Примечания { get; set; }
 
+        public static string FIOorREKV(string Тип)
+        {
+            string fioORrekv;
+
+            switch (Тип)
+            {
+                case "юр":
+                    fioORrekv = "Реквизиты";
+                    break;
+                case "физ":
+                    fioORrekv = "Паспортные данные";
+                    break;
+                default:
+                    fioORrekv = "Ошибка";
+                    break;
+            }
+            return fioORrekv;
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Тренажёры> Тренажёры { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

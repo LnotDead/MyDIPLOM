@@ -15,6 +15,11 @@ namespace WebApplication1.Controllers
 
         List<MenuItem> items = new List<MenuItem>
         {
+            new MenuItem {Name = "Статистика",
+                          Controller = "Main",
+                          Action = "Index",
+                          Active = string.Empty,
+                          Admin = false},
             new MenuItem {Name = "Тренажёры",
                           Controller = "Тренажёры",
                           Action = "Index",

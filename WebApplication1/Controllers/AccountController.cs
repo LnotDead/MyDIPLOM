@@ -101,7 +101,7 @@ namespace WebApplication1.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "Тренажёры");
+                    return RedirectToAction("Index", "Main");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -470,9 +470,26 @@ namespace WebApplication1.Controllers
 
             var user = (from x in db.Users select x).First(m => m.Id == result);
 
+            string rusRole = null;
+
+            switch (user.userRoleName)
+                {
+                case "Admin":
+                    rusRole = "Администратор, ";
+                    break;
+
+                case "Engineer":
+                    rusRole = "Инженер, ";
+                    break;
+
+                case "Technician":
+                    rusRole = "Техник, ";
+                    break;
+            }
 
 
-            ViewBag.Hello = user.firstName + " " + user.patronymic;
+
+            ViewBag.Hello = rusRole + user.firstName + " " + user.patronymic;
 
 
 
