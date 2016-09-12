@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,10 @@ using System.IO;
 
 namespace WebApplication1.Controllers
 {
+
+
+
+
     public class MainController : Controller
     {
         private DB_for_service_supportEntities db = new DB_for_service_supportEntities();
@@ -23,9 +28,27 @@ namespace WebApplication1.Controllers
         }
 
 
+
         public ActionResult MachinesChart()
         {
-            //db.Тренажёры.
+            List<string> sn = (from x in db.Тренажёры select x.Начало_SN).Distinct().ToList();
+
+
+            IDictionary machinesData = new Dictionary<string, int>();
+
+            foreach (var x in sn)
+            {
+                machinesData.Add(x, 0);
+            }
+
+
+            foreach (var x in db.Тренажёры)
+            {
+                int temp = (int)machinesData[x.Начало_SN];
+                temp += 1;
+                machinesData[x.Начало_SN] = temp;
+            }
+
 
 
             var data = new Dictionary<string, float>
@@ -38,15 +61,9 @@ namespace WebApplication1.Controllers
             };
 
 
-
-
-
-
-
-
             Chart chart = new Chart();
             chart.Width = 700;
-            chart.Height = 300;
+            chart.Height = 700;
 
             var area = new ChartArea();
             //настройка области диаграммы размеры и т.д.
@@ -54,8 +71,9 @@ namespace WebApplication1.Controllers
 
             //Создание и определение серии данных
             var series = new Series();
-            foreach (var item in data)
-            {
+            //foreach (var item in data)
+            foreach (DictionaryEntry item in machinesData)
+                {
                 series.Points.AddXY(item.Key, item.Value);
             }
             series.Label = "#PERCENT{P0}";
