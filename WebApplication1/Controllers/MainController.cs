@@ -21,9 +21,13 @@ namespace WebApplication1.Controllers
     {
         private DB_for_service_supportEntities db = new DB_for_service_supportEntities();
 
+        
+
         // GET: Main
         public ActionResult Index()
         {
+            db.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
+
             bool flag = true;
             ViewBag.TotalMachines = (from x in db.Тренажёры select x).Count();
             ViewBag.TotalClients = (from x in db.Клиенты select x).Count();
@@ -51,6 +55,8 @@ namespace WebApplication1.Controllers
         {
             List<string> sn = (from x in db.Тренажёры select x.Начало_SN).Distinct().ToList();
             Dictionary<string, int> machinesData = new Dictionary<string, int>();
+
+            db.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
 
             foreach (var x in sn)
             {
@@ -113,6 +119,7 @@ namespace WebApplication1.Controllers
         {
             List<int> clientCode = (from x in db.Тренажёры select x.Код_клиента).Distinct().ToList();
 
+            db.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
 
             Dictionary<int, int> clientsData = new Dictionary<int, int>();
             Dictionary<int, string> codeName = new Dictionary<int, string>();
@@ -193,6 +200,8 @@ namespace WebApplication1.Controllers
             area.AxisY.Enabled = AxisEnabled.False;
             area.BackColor = Color.FromArgb(0xdd, 0xdd, 0xdd);
             chart.ChartAreas.Add(area);
+
+            db.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
 
             //Создание и определение серии данных
             var series = new Series();
