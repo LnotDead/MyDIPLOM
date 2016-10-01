@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="mainbox" style="margin: 20px 0 0">
+    <div class="topMachine">
+        <div class="col-md-2">
+            <button class="btn btn-default btn-yellow" data-toggle="collapse" data-target="#machines">Подробнее</button>
+        </div>
+        <div class="col-md-10">
+            <h4 style="color: white">Кол-во обслуживаемых тренажёров @ViewBag.TotalMachines</h4>
+        </div>
+
+
+        <div id="machines" class="collapse" style="font-weight: bold">
+
+            <div>
+                <h5 style="color: white">Количество тренажёров по моделям</h5>
+                <img src="@Url.Action("MachinesChart")" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="mainbox">
+    <div class="topClient">
+        <div class="col-md-2">
+            <button class="btn btn-default btn-yellow" data-toggle="collapse" data-target="#clients">Подробнее</button>
+        </div>
+        <div class="col-md-10">
+            <h4 style="color: white">Кол-во обслуживаемых клиентов @ViewBag.TotalClients</h4>
+        </div>
+
+        <div id="clients" class="collapse" style="font-weight: bold">
+ 
+            <h5 style="color: white">Количество тренажёров у клиентов</h5>
+            <div>
+                <img src="@Url.Action("ClientsChart")" />
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="mainbox">
+    <div class="topStore">
+        <div class="col-md-2">
+            <button class="btn btn-default btn-yellow" data-toggle="collapse" data-target="#store">Подробнее</button>
+        </div>
+        <div class="col-md-10">
+            <h4 style="color: white">@ViewBag.TotalSpare</h4>
+        </div>
+
+        <div id="store" class="collapse" style="font-weight: bold">
+            <h5 style="color: white">Фактический и необходимый запас деталей на складе</h5>
+            <div>
+                <img src="@Url.Action("SpareChart")" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div></div>
+<div></div>
+
+<div style="display:none;" class="nav_up" id="nav_up"></div>
