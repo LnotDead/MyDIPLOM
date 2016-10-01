@@ -136,3 +136,14 @@ h3 {
     width: 100%;
     content: "Склад";
 }
+
+.text-danger {
+  color: #ce3027;
+  font-weight: bold;
+
+}
+
+.text-success {
+  color: #00ef0c;
+    font-weight: bold;
+}

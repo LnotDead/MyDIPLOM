@@ -21,6 +21,7 @@ namespace WebApplication1.Models
         public static string Creating { get { return "СОЗДАНИЕ НОВОЙ ЗАПИСИ"; } }
         public static string Create { get { return "Создать"; } }
         public static string RegNew { get { return "Зарегистрировать нового пользователя"; } }
+        public static string ChPass { get { return "Изменение пароля"; } }
 
     }
 }

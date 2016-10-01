@@ -322,9 +322,10 @@ namespace WebApplication1.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return RedirectToAction("Details", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
-            AddErrors(result);
+            //AddErrors(result);
+            ModelState.AddModelError("", "Вы ввели неверный старый пароль");
             return View(model);
         }
 

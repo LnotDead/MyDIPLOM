@@ -48,12 +48,12 @@ namespace WebApplication1.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Введите логин")]
         [Display(Name = "Логин")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Логин должен иметь формат e-mail")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите пароль")]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }

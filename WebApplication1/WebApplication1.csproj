@@ -326,9 +326,6 @@
       <DependentUpon>ADONET_Entity_Data_Model1.edmx</DependentUpon>
       <LastGenOutput>ADONET_Entity_Data_Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\HtmlPage1.html" />
-    <Content Include="ClassDiagram1.cd" />
-    <Content Include="ClassDiagram2.cd" />
     <None Include="Resources\logo1.png" />
     <None Include="Resources\technogym1.png" />
     <None Include="Resources\technogym2.png" />
