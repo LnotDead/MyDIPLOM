@@ -114,41 +114,29 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public async Task<ActionResult> Index([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,userRoleName,secondName,patronymic,firstName")] ApplicationUser model, string SelectedRole)
-        public async Task<ActionResult> Index([Bind(Include = "Id,Email,PasswordHash,SecurityStamp,UserName,userRoleName,secondName,patronymic,firstName")] ApplicationUser model, string SelectedRole)
+        public async Task<ActionResult> Index([Bind(Include = "Id,Email,PasswordHash,SecurityStamp,UserName,userRoleName,secondName,patronymic,firstName")] ApplicationUser model, string SelectedRole, string SelectedRole1)
         {
-                model.UserName = model.Email;
-                model.userRoleName = SelectedRole;
-                
+            model.UserName = model.Email;
+            model.userRoleName = SelectedRole;
 
             if (ModelState.IsValid)
             {
-                if (!UserManager.IsInRole(model.Id, SelectedRole))
+
+                if (SelectedRole != null)
                 {
-                    UserManager.RemoveFromRoles(model.Id, UserManager.GetRoles(model.Id).ToArray());
-                    UserManager.AddToRole(model.Id, model.userRoleName);
+                    if (!UserManager.IsInRole(model.Id, SelectedRole))
+                    {
+                        UserManager.RemoveFromRoles(model.Id, UserManager.GetRoles(model.Id).ToArray());
+                        UserManager.AddToRole(model.Id, model.userRoleName);
+                    }
                 }
+
 
                 db.Entry(model).State = EntityState.Modified;
 
 
-
-                //try
-                //{
                 await db.SaveChangesAsync();
-                    
-                //}
-                //catch (DbEntityValidationException ex)
-                //{
-                //    foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
-                //    {
-                //        Response.Write("Object: " + validationError.Entry.Entity.ToString());
-                //        Response.Write("                ");
-                //        foreach (DbValidationError err in validationError.ValidationErrors)
-                //        {
-                //            Response.Write(err.ErrorMessage + "           ");
-                //        }
-                //    }
-                //}
+
 
 
                 return RedirectToAction("Details");

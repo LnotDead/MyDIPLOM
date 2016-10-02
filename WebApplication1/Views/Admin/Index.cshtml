@@ -32,7 +32,15 @@
 
                             <td class="nav nav-pills td2">
                                 @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { id = user.Id }) |
-                                @Html.ActionLink(WebApplication1.Models.Strings.Delete, "Delete", new { id = user.Id })
+
+
+                                @{
+                                    if (@user.Id != ViewBag.currentId)
+                                    {
+                                        @Html.ActionLink(WebApplication1.Models.Strings.Delete, "Delete", new { id = user.Id })
+                                    }
+                                }
+
                             </td>
                         </tr>
                     }

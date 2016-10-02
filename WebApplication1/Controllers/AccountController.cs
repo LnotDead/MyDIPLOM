@@ -201,6 +201,10 @@ namespace WebApplication1.Controllers
             }
 
             // If we got this far, something failed, redisplay form
+
+            List<string> allRoles = (from x in db.Roles select x.Name).Distinct().ToList();
+            ViewBag.AllRoles = allRoles;
+
             return View(model);
         }
 
