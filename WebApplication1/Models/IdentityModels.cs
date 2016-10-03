@@ -12,13 +12,13 @@ namespace WebApplication1.Models
     {
         [Display(Name = "Права доступа")]
         public string userRoleName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Введите имя")]
         [Display(Name = "Имя")]
         public string firstName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Введите фамилию")]
         [Display(Name = "Фамилия")]
         public string secondName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Введите отчество")]
         [Display(Name = "Отчество")]
         public string patronymic { get; set; }
 

@@ -178,6 +178,18 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, string SelectedRole, string FirstName, string SecondName, string Patronymic)
         {
+            if (String.IsNullOrEmpty(FirstName))
+                ModelState.AddModelError("FirstName", "Введите имя");
+
+            if (String.IsNullOrEmpty(SecondName))
+                ModelState.AddModelError("SecondName", "Введите фамилию");
+
+            if (String.IsNullOrEmpty(Patronymic))
+                ModelState.AddModelError("Patronymic", "Введите отчество");
+
+            if ((from x in db.Users select x).Any(x => x.Email == model.Email))
+                ModelState.AddModelError("Email", "Пользователь с таким логином уже есть в базе");
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { patronymic = Patronymic, UserName = model.Email, Email = model.Email, firstName = FirstName, userRoleName = SelectedRole, secondName = SecondName };
