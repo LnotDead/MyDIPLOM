@@ -5,12 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h3>@WebApplication1.Models.Strings.Deleting</h3>
 
-<h3>Are you sure you want to delete this?</h3>
+<h4>@WebApplication1.Models.Strings.Are_you_sure</h4>
+<br />
+
 <div>
-    <h4>Модели_тренажёров</h4>
-    <hr />
+    @Html.ValidationMessage("ErrorMessage", "", new { @class = "text-danger" })
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Тип_тренажёра)
@@ -37,11 +38,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Фото)
+            @Html.DisplayNameFor(model => model.ImageData)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Фото)
+            @Html.DisplayFor(model => model.ImageData)
         </dd>
 
         <dt>
@@ -58,8 +59,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value=@WebApplication1.Models.Strings.Delete class="btn btn-default btn-yellow" /> |
+            @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
         </div>
     }
 </div>

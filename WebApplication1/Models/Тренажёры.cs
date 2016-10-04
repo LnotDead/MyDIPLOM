@@ -24,12 +24,15 @@ namespace WebApplication1.Models
         [Display(Name = "Начало серийного номера")]
         public string Начало_SN { get; set; }
 
+        [Required(ErrorMessage = "Введите конец серийного номера")]
         [Display(Name = "Конец серийного номера")]
         public string Конец_SN { get; set; }
 
         [Display(Name = "Владелец")]
         public int Код_клиента { get; set; }
 
+        [Required(ErrorMessage = "Введите гарантию")]
+        [Range(1, 36, ErrorMessage = "Гарантия должна быть от 1 до 36 месяцев")]
         [Display(Name = "Гарантия (мес.)")]
         public int Основная_гарантия { get; set; }
         public string Примечания { get; set; }

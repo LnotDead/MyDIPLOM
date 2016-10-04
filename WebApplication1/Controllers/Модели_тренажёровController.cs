@@ -137,9 +137,18 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
             Модели_тренажёров модели_тренажёров = await db.Модели_тренажёров.FindAsync(id);
-            db.Модели_тренажёров.Remove(модели_тренажёров);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+
+            try
+            {
+                db.Модели_тренажёров.Remove(модели_тренажёров);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ModelState.AddModelError("ErrorMessage", "Данную запись нельзя удалить, т.к. на неё имеются ссылки в других таблицах. Удалите ссылки в других таблицах и повторите удаление записи");
+                return View(модели_тренажёров);
+            }
         }
 
         protected override void Dispose(bool disposing)

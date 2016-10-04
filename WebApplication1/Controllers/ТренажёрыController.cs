@@ -56,13 +56,20 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Начало_SN,Конец_SN,Код_клиента,Основная_гарантия,Примечания,ID_установки")] Тренажёры тренажёры)
         {
-            if (ModelState.IsValid)
+            if ((from x in db.Тренажёры select x).Any(x => x.Начало_SN + x.Конец_SN == тренажёры.Начало_SN + тренажёры.Конец_SN))
             {
-                тренажёры.ID_установки = null;
+                ModelState.AddModelError("Конец_SN", "В базе уже есть тренажёр с таким SN.");
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    тренажёры.ID_установки = null;
 
-                db.Тренажёры.Add(тренажёры);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                    db.Тренажёры.Add(тренажёры);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.Код_клиента = new SelectList(db.Клиенты, "Код_клиента", "ФИО_Название_клуба", тренажёры.Код_клиента);
