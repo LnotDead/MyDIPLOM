@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
 using static WebApplication1.Controllers.ManageController;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Controllers
 {
@@ -51,12 +53,17 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Email,PasswordHash,SecurityStamp,UserName,userRoleName,secondName,patronymic,firstName")] ApplicationUser model, string SelectedRole)
         {
-            model.UserName = model.Email;
-            model.userRoleName = SelectedRole;
+            if (model.Email == null)
+                ModelState.AddModelError("Email", "Введите Email");
+
+
 
 
             if (ModelState.IsValid)
             {
+                model.UserName = model.Email;
+                model.userRoleName = SelectedRole;
+
                 if (!UserManager.IsInRole(model.Id, SelectedRole))
                 {
                     UserManager.RemoveFromRoles(model.Id, UserManager.GetRoles(model.Id).ToArray());
@@ -65,12 +72,27 @@ namespace WebApplication1.Controllers
 
                 db.Entry(model).State = EntityState.Modified;
 
+                try
+                {
+                    await db.SaveChangesAsync();
+                }
+                catch
+                {
+                    ModelState.AddModelError("Email", "Пользователь с таким логином уже есть в базе");
+                    List<string> allRoles1 = (from x in db.Roles select x.Name).Distinct().ToList();
+                    ViewBag.AllRoles = allRoles1;
 
-                await db.SaveChangesAsync();
+                    return View(model);
+                }
+
 
 
                 return RedirectToAction("Index");
             }
+
+            List<string> allRoles = (from x in db.Roles select x.Name).Distinct().ToList();
+            ViewBag.AllRoles = allRoles;
+
             return View(model);
         }
 

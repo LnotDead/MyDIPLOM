@@ -28,14 +28,19 @@ namespace WebApplication1.Models
 
         //List<string> typesList = new List<string> { "юр", "физ", "test" };
 
+        [Required(ErrorMessage = "Введите ФИО (физ. лицо) или название клуба (юр. лицо)")]
         [Display(Name = "ФИО или Клуб")]
         public string ФИО_Название_клуба { get; set; }
 
+        [Required(ErrorMessage = "Введите паспортные данные (физ. лицо) или реквизиты (юр. лицо)")]
         [Display(Name = "Паспортные данные или реквизиты")]
         public string Паспортные_данные_Реквизиты { get; set; }
+        [Required(ErrorMessage = "Введите город клиента")]
         public string Город { get; set; }
+        [Required(ErrorMessage = "Введите адрес клиента")]
         public string Адрес { get; set; }
 
+        [Required(ErrorMessage = "Введите основной контакт клиента")]
         [Display(Name = "Основной контакт")]
         public string Основной_контакт { get; set; }
 

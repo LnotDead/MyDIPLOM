@@ -23,11 +23,15 @@ namespace WebApplication1.Models
         }
 
         [Display(Name = "Начало серийного номера")]
+        [Required(ErrorMessage = "Введите начало серийного номера")]
         public string Начало_SN { get; set; }
         [Display(Name = "Тип")]
+        [Required(ErrorMessage = "Введите тип модели")]
         public string Тип_тренажёра { get; set; }
         [Display(Name = "Серия")]
+        [Required(ErrorMessage = "Введите название серии")]
         public string Название_линейки { get; set; }
+        [Required(ErrorMessage = "Введите название модели")]
         [Display(Name = "Модель")]
         public string Название_модели { get; set; }
         public string Примечания { get; set; }

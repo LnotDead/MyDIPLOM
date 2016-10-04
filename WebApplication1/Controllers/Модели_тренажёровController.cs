@@ -47,14 +47,40 @@ namespace WebApplication1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Начало_SN,Тип_тренажёра,Название_линейки,Название_модели,Фото,Примечания")] Модели_тренажёров модели_тренажёров)
+        public async Task<ActionResult> Create([Bind(Include = "Начало_SN,Тип_тренажёра,Название_линейки,Название_модели,Примечания,ImageData, ImageMimeType")] Модели_тренажёров модели_тренажёров, HttpPostedFileBase image, string returnUrl)
         {
-            if (ModelState.IsValid)
+            if ((from x in db.Модели_тренажёров select x).Any(x => x.Начало_SN == модели_тренажёров.Начало_SN))
             {
-                db.Модели_тренажёров.Add(модели_тренажёров);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                ModelState.AddModelError("Начало_SN", "В базе уже есть модель тренажёра с таким началом SN.");
             }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    if (image != null)
+                    {
+                        if (image.ContentLength > 2097152) // 2 Мб
+                        {
+                            ViewBag.Pic = "Вы пытались загрузить картинку более 2 Мб";
+                            //return Redirect(returnUrl);
+
+                            return View(модели_тренажёров);
+                        }
+
+                        модели_тренажёров.ImageMimeType = image.ContentType;
+                        модели_тренажёров.ImageData = new byte[image.ContentLength];
+                        image.InputStream.Read(модели_тренажёров.ImageData, 0, image.ContentLength);
+                    }
+
+
+
+                    db.Модели_тренажёров.Add(модели_тренажёров);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+            }
+
+
 
             return View(модели_тренажёров);
         }

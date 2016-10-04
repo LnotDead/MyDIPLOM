@@ -22,8 +22,6 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Тип, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.EditorFor(model => model.Тип, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Тип, "", new { @class = "text-danger" })*@
                 @{
                     List<SelectListItem> typesList = new List<SelectListItem>();
                     typesList.Add(new SelectListItem() { Text = "юр" });

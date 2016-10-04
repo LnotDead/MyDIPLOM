@@ -61,19 +61,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ImageData, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-
-
                 <div class="editor-label">
                 </div>
-
                 <div class="editor-field">
                     @if (Model.ImageData == null)
-{
+                    {
                         @:Отсутствует
-                        }
+                    }
                     else
                     {
-                        @*<img width="150" height="150" src="@Url.Action("GetImage", "Модели_тренажёров", new { Model.Начало_SN })" />*@
                         <img height="150" src="@Url.Action("GetImage", "Модели_тренажёров", new { Model.Начало_SN })" />
                     }
                 </div>
@@ -91,7 +87,7 @@
                 </b>
             </div>
             <div class="col-md-10">
-                <input type="file" name="Image" accept="image/*,image/jpeg"/>
+                <input type="file" name="image" accept="image/*,image/jpeg"/>
                 <text class = "text-danger">
                     @ViewBag.Pic
                 </text>

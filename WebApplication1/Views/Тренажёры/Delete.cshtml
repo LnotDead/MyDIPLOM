@@ -10,6 +10,8 @@
 <h4>@WebApplication1.Models.Strings.Are_you_sure</h4>
 <br />
 <div>
+    @Html.ValidationMessage("ErrorMessage", "", new { @class = "text-danger" })
+
     <h4 style="font-weight: bold">@Html.DisplayFor(model => model.SN)</h4>
     <hr />
     <dl class="dl-horizontal">

@@ -52,36 +52,29 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Код_клиента,Тип,ФИО_Название_клуба,Паспортные_данные_Реквизиты,Город,Адрес,Основной_контакт,Дополнительные_контакты,Примечания")] Клиенты клиенты)
         {
+
             if (ModelState.IsValid)
             {
-
-
-
-                db.Клиенты.Add(клиенты);
-
-
+                    db.Клиенты.Add(клиенты);
 
                 try
                 {
-                    await db.SaveChangesAsync();
-            }
-                catch (DbEntityValidationException ex)
-            {
-                foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                        await db.SaveChangesAsync();
+                }
+                    catch (DbEntityValidationException ex)
                 {
-                    Response.Write("Object: " + validationError.Entry.Entity.ToString());
-                    Response.Write("                ");
-                    foreach (DbValidationError err in validationError.ValidationErrors)
+                    foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
                     {
-                        Response.Write(err.ErrorMessage + "           ");
+                        Response.Write("Object: " + validationError.Entry.Entity.ToString());
+                        Response.Write("                ");
+                        foreach (DbValidationError err in validationError.ValidationErrors)
+                        {
+                            Response.Write(err.ErrorMessage + "           ");
+                        }
                     }
                 }
-            }
 
-
-
-
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
 
             return View(клиенты);
@@ -112,31 +105,7 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(клиенты).State = EntityState.Modified;
-
-
-
-                //try
-                //{
-                    await db.SaveChangesAsync();
-                //}
-                //catch (DbEntityValidationException ex)
-                //{
-                //    foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
-                //    {
-                //        Response.Write("Object: " + validationError.Entry.Entity.ToString());
-                //        Response.Write("                ");
-                //        foreach (DbValidationError err in validationError.ValidationErrors)
-                //        {
-                //            Response.Write(err.ErrorMessage + "           ");
-                //        }
-                //    }
-                //}
-
-
-
-
-
-
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(клиенты);
@@ -163,9 +132,17 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Клиенты клиенты = await db.Клиенты.FindAsync(id);
-            db.Клиенты.Remove(клиенты);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            try
+            {
+                db.Клиенты.Remove(клиенты);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ModelState.AddModelError("ErrorMessage", "Данную запись нельзя удалить, т.к. на неё имеются ссылки в других таблицах. Удалите ссылки в других таблицах и повторите удаление записи");
+                return View(клиенты);
+            }
         }
 
         protected override void Dispose(bool disposing)

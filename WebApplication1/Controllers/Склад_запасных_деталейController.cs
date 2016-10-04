@@ -49,11 +49,18 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Код_детали,Количество,Примечания,Плановый_запас")] Склад_запасных_деталей склад_запасных_деталей)
         {
-            if (ModelState.IsValid)
+            if ((from x in db.Склад_запасных_деталей select x).Any(x => x.Код_детали == склад_запасных_деталей.Код_детали))
             {
-                db.Склад_запасных_деталей.Add(склад_запасных_деталей);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                ModelState.AddModelError("Код_детали", "В базе уже есть запасная деталь с таким кодом.");
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Склад_запасных_деталей.Add(склад_запасных_деталей);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
 
             return View(склад_запасных_деталей);
@@ -111,9 +118,18 @@ namespace WebApplication1.Controllers
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
             Склад_запасных_деталей склад_запасных_деталей = await db.Склад_запасных_деталей.FindAsync(id);
-            db.Склад_запасных_деталей.Remove(склад_запасных_деталей);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+
+            try
+            {
+                db.Склад_запасных_деталей.Remove(склад_запасных_деталей);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ModelState.AddModelError("ErrorMessage", "Данную запись нельзя удалить, т.к. на неё имеются ссылки в других таблицах. Удалите ссылки в других таблицах и повторите удаление записи");
+                return View(склад_запасных_деталей);
+            }
         }
 
         protected override void Dispose(bool disposing)

@@ -5,10 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h3>@WebApplication1.Models.Strings.Details</h3>
+<br />
 
 <div>
-    <h4>Модели_тренажёров</h4>
+    <h4 style="font-weight: bold">@Html.DisplayFor(model => model.Начало_SN)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -35,13 +36,7 @@
             @Html.DisplayFor(model => model.Название_модели)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Фото)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Фото)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Примечания)
@@ -54,6 +49,18 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Начало_SN }) |
-    @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { id = Model.Начало_SN}) |
+        @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
 </p>
+
+<div class="col-md-6">
+    <div class="item">
+        @if (Model.ImageData != null)
+        {
+            <div style="float: left; margin-right: 20px">
+                <img height="500" src="@Url.Action("GetImage", "Модели_тренажёров", new { Model.Начало_SN})" />
+            </div>
+        }
+
+    </div>
+</div>

@@ -20,11 +20,16 @@ namespace WebApplication1.Models
             this.Подходящие_запасные_детали = new HashSet<Подходящие_запасные_детали>();
         }
 
+        [Required(ErrorMessage = "Введите код детали")]
         [Display(Name = "Деталь")]
         public string Код_детали { get; set; }
+        [Required(ErrorMessage = "Введите кол-во")]
+        [Range(0, 9999, ErrorMessage = "Кол-во должно быть в диапазоне от 0 до 9999")]
         public int Количество { get; set; }
         public string Примечания { get; set; }
         [Display(Name = "Плановый запас")]
+        [Required(ErrorMessage = "Введите плановое кол-во")]
+        [Range(0, 9999, ErrorMessage = "Кол-во должно быть в диапазоне от 0 до 9999")]
         public Nullable<int> Плановый_запас { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

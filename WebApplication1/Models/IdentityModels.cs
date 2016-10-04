@@ -22,6 +22,11 @@ namespace WebApplication1.Models
         [Display(Name = "Отчество")]
         public string patronymic { get; set; }
 
+        [Required(ErrorMessage = "Введите Email")]
+        [Display(Name = "Email")]
+        [EmailAddress(ErrorMessage = "Поле должно иметь формат e-mail")]
+        override public string Email { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
            
