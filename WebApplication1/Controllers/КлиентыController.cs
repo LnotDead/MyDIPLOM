@@ -12,6 +12,7 @@ using System.Data.Entity.Validation;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize(Roles = "Admin, Engineer")]
     public class КлиентыController : Controller
     {
         private DB_for_service_supportEntities db = new DB_for_service_supportEntities();

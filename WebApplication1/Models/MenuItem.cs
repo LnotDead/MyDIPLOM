@@ -11,6 +11,6 @@ namespace WebApplication1.Models
         public string Controller { get; set; }
         public string Action { get; set; }
         public string Active { get; set; }
-        public bool Admin { get; set; }
+        public string Role { get; set; }
     }
 }

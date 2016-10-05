@@ -11,16 +11,17 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize]
     public class Модели_тренажёровController : Controller
     {
         private DB_for_service_supportEntities db = new DB_for_service_supportEntities();
-
+        [Authorize(Roles = "Admin, Engineer")]
         // GET: Модели_тренажёров
         public async Task<ActionResult> Index()
         {
             return View(await db.Модели_тренажёров.ToListAsync());
         }
-
+        [Authorize(Roles = "Admin, Engineer")]
         // GET: Модели_тренажёров/Details/5
         public async Task<ActionResult> Details(string id)
         {
@@ -35,13 +36,13 @@ namespace WebApplication1.Controllers
             }
             return View(модели_тренажёров);
         }
-
+        [Authorize(Roles = "Admin, Engineer")]
         // GET: Модели_тренажёров/Create
         public ActionResult Create()
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin, Engineer")]
         // POST: Модели_тренажёров/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -84,7 +85,7 @@ namespace WebApplication1.Controllers
 
             return View(модели_тренажёров);
         }
-
+        [Authorize(Roles = "Admin, Engineer")]
         // GET: Модели_тренажёров/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
@@ -106,7 +107,7 @@ namespace WebApplication1.Controllers
 
 
 
-
+        [Authorize(Roles = "Admin, Engineer")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Начало_SN,Тип_тренажёра,Название_линейки,Название_модели,Примечания, ImageData, ImageMimeType")] Модели_тренажёров модели_тренажёров, HttpPostedFileBase image, string returnUrl)
@@ -141,7 +142,7 @@ namespace WebApplication1.Controllers
 
 
 
-
+        [Authorize(Roles = "Admin, Engineer")]
         // GET: Модели_тренажёров/Delete/5
         public async Task<ActionResult> Delete(string id)
         {
@@ -156,7 +157,7 @@ namespace WebApplication1.Controllers
             }
             return View(модели_тренажёров);
         }
-
+        [Authorize(Roles = "Admin, Engineer")]
         // POST: Модели_тренажёров/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -176,7 +177,7 @@ namespace WebApplication1.Controllers
                 return View(модели_тренажёров);
             }
         }
-
+        [Authorize]
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -192,7 +193,7 @@ namespace WebApplication1.Controllers
         //в параметре началу SN.Он возвращает класс FileContentResult, когда мы
         //хотим вернуть файл браузеру клиента, и экземпляры создаются
         //с помощью метода File базового класса контроллера.
-
+        [Authorize]
         public FileContentResult GetImage(string Начало_SN)
         {
             Модели_тренажёров модели_тренажёров = db.Модели_тренажёров.FirstOrDefault(p => p.Начало_SN == Начало_SN);

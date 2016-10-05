@@ -162,6 +162,7 @@ namespace WebApplication1.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         public ActionResult Register()
         {
 
@@ -175,6 +176,7 @@ namespace WebApplication1.Controllers
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, string SelectedRole, string FirstName, string SecondName, string Patronymic)
         {

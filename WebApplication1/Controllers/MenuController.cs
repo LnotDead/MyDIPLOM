@@ -7,44 +7,41 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize]
     public class MenuController : Controller
     {
-
-
-
-
         List<MenuItem> items = new List<MenuItem>
         {
             new MenuItem {Name = "Статистика",
                           Controller = "Main",
                           Action = "Index",
                           Active = string.Empty,
-                          Admin = false},
+                          Role = "Technician"},
             new MenuItem {Name = "Тренажёры",
                           Controller = "Тренажёры",
                           Action = "Index",
                           Active = string.Empty,
-                          Admin = false},
+                          Role = "Technician"},
             new MenuItem {Name = "Клиенты",
                           Controller = "Клиенты",
                           Action = "Index",
                           Active = string.Empty,
-                          Admin = false},
+                          Role = "Engineer"},
             new MenuItem {Name = "Склад запасных деталей",
                           Controller = "Склад_запасных_деталей",
                           Action = "Index",
                           Active = string.Empty,
-                          Admin = false},
+                          Role = "Engineer"},
             new MenuItem {Name = "Модели тренажёров",
                           Controller = "Модели_тренажёров",
                           Action = "Index",
                           Active = string.Empty,
-                          Admin = false},
+                          Role = "Engineer"},
             new MenuItem {Name = "Администирирование",
                           Controller = "Admin",
                           Action = "Index",
                           Active = string.Empty,
-                          Admin = true},
+                          Role = "Admin"},
         };
 
 

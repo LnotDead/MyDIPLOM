@@ -7,7 +7,8 @@
 
 <h3>@WebApplication1.Models.Strings.Details</h3>
 <br />
-<div class="col-md-6">
+
+<div>
     <h4 style="font-weight: bold">@Html.DisplayFor(model => model.SN)</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -59,14 +60,15 @@
     </dl>
 
 
-    <p>
-        @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { part1 = Model.Начало_SN, part2 = Model.Конец_SN }) |
-        @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
-    </p>
+
 
 
 </div>
 
+<p>
+    @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { part1 = Model.Начало_SN, part2 = Model.Конец_SN }) |
+    @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
+</p>
 
 <div class="col-md-6">
     <div class="item">

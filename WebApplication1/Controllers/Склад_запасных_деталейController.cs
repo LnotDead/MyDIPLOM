@@ -11,6 +11,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize(Roles = "Admin, Engineer")]
     public class Склад_запасных_деталейController : Controller
     {
         private DB_for_service_supportEntities db = new DB_for_service_supportEntities();

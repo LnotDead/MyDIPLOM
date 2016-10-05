@@ -19,22 +19,45 @@
                 </li>
             }
         }
-        else
+        if (User.IsInRole("Engineer"))
         {
             foreach (var item in Model)
             {
-                if (!item.Admin)
+                if (item.Role == "Engineer" | item.Role == "Technician")
                 {
+    
+                        <li class="@item.Active">
+                            @Html.RouteLink(item.Name,
+                                new
+                                {
+                                    controller = item.Controller,
+                                    action = item.Action
+                                })
+                        </li>
+                }
+            }
+        }
+        if (User.IsInRole("Technician"))
+        {
+            foreach (var item in Model)
+            {
+                if (item.Role == "Technician")
+                {
+
                     <li class="@item.Active">
                         @Html.RouteLink(item.Name,
-                            new
-                            {
-                                controller = item.Controller,
-                                action = item.Action
-                            })
+                                new
+                                {
+                                    controller = item.Controller,
+                                    action = item.Action
+                                })
                     </li>
                 }
             }
         }
+
+
+
+
     }
 </ul>

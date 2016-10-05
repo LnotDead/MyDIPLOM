@@ -16,7 +16,7 @@ namespace WebApplication1.Controllers
 
 
 
-
+    [Authorize]
     public class MainController : Controller
     {
         private DB_for_service_supportEntities db = new DB_for_service_supportEntities();

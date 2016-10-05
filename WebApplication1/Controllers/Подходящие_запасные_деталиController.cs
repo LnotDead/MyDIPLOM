@@ -11,6 +11,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize]
     public class Подходящие_запасные_деталиController : Controller
     {
         private DB_for_service_supportEntities db = new DB_for_service_supportEntities();

@@ -16,6 +16,7 @@ using System.ComponentModel.DataAnnotations;
 namespace WebApplication1.Controllers
 {
 
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         // GET: Admin
