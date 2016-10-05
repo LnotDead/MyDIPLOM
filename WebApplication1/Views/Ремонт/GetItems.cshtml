@@ -1,0 +1,7 @@
+﻿@model IEnumerable<WebApplication1.Models.Тренажёры>
+<select id="Конец_SN" name="Конец_SN" class = "form-control">
+    @foreach (var item in Model)
+    {
+        <option value="@item.Конец_SN">@item.Конец_SN</option>
+    }
+</select>

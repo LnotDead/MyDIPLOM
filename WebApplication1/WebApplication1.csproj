@@ -465,6 +465,7 @@
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Ремонт\GetItems.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

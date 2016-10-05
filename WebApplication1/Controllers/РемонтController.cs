@@ -19,8 +19,8 @@ namespace WebApplication1.Controllers
         // GET: Ремонт
         public async Task<ActionResult> Index()
         {
-            var ремонт = db.Ремонт.Include(р => р.Тренажёры).Include(р => р.Сотрудники);
-            return View(await ремонт.ToListAsync());
+            //var ремонт = db.Ремонт.Include(р => р.Тренажёры).Include(р => р.Сотрудники);
+            return View(await db.Ремонт.ToListAsync());
         }
 
         // GET: Ремонт/Details/5
@@ -38,10 +38,24 @@ namespace WebApplication1.Controllers
             return View(ремонт);
         }
 
+
+        public ActionResult GetItems(string id)
+        {
+            return PartialView(db.Тренажёры.Where(c => c.Начало_SN == id).ToList());
+        }
+
         // GET: Ремонт/Create
         public ActionResult Create()
         {
-            ViewBag.Начало_SN = new SelectList(db.Тренажёры, "Начало_SN", "Примечания");
+            string selectedНачало_SN = (from x in db.Тренажёры select x).OrderBy(z => z.Начало_SN).First().Начало_SN;
+
+
+
+
+            //ViewBag.Начало_SN = new SelectList(db.Тренажёры.OrderBy(z => z.Начало_SN).Distinct(), "Начало_SN", "Начало_SN", selectedНачало_SN);
+
+            ViewBag.Начало_SN = new SelectList((from b in db.Тренажёры select b.Начало_SN).Distinct(), selectedНачало_SN);
+            ViewBag.Конец_SN = new SelectList(db.Тренажёры.Where(c => c.Начало_SN == selectedНачало_SN).OrderBy(z => z.Конец_SN), "Конец_SN", "Конец_SN");
             ViewBag.ID_сотрудника = new SelectList(db.Сотрудники, "ID_сотрудника", "ФИО_сотрудника");
             return View();
         }

@@ -2,56 +2,65 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h3>РЕМОНТЫ ТРЕНАЖЁРОВ</h3>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(WebApplication1.Models.Strings.Create_New, "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Начало)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Завершение)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Примечания)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Тренажёры.Примечания)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Сотрудники.ФИО_сотрудника)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Начало)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Завершение)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Примечания)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Тренажёры.Примечания)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Сотрудники.ФИО_сотрудника)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_ремонта }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_ремонта }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_ремонта })
-        </td>
-    </tr>
-}
+<table class="sort" id="bigTable">
+    <thead>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.SN)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Сотрудники.ФИО_сотрудника)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Начало)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Завершение)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Примечания)
+            </td>
 
+            <td class="td1"> </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Сотрудники.ФИО_сотрудника)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Начало)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Завершение)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Примечания)
+                </td>
+                <td class="nav nav-pills td2">
+                    @Html.ActionLink(WebApplication1.Models.Strings.Edit, "Edit", new { id = item.ID_ремонта }) |
+                    @Html.ActionLink(WebApplication1.Models.Strings.details, "Details", new { id = item.ID_ремонта }) |
+                    @Html.ActionLink(WebApplication1.Models.Strings.Delete, "Delete", new { id = item.ID_ремонта })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+<div style="display:none;" class="nav_up" id="nav_up"></div>
+<div style="display:none;" class="nav_down" id="nav_down"></div>

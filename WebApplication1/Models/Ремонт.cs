@@ -11,17 +11,26 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Ремонт
     {
         public int ID_ремонта { get; set; }
         public string Начало_SN { get; set; }
         public string Конец_SN { get; set; }
         public Nullable<int> ID_сотрудника { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime Начало { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Завершение { get; set; }
         public string Примечания { get; set; }
-    
+
+        [Display(Name = "Серийный номер")]
+        public string SN
+        {
+            get { return Начало_SN + Конец_SN; }
+        }
+
         public virtual Тренажёры Тренажёры { get; set; }
         public virtual Сотрудники Сотрудники { get; set; }
     }

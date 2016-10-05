@@ -11,7 +11,8 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Сотрудники
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +23,8 @@ namespace WebApplication1.Models
         }
     
         public int ID_сотрудника { get; set; }
+
+        [Display(Name = "ФИО сотрудника")]
         public string ФИО_сотрудника { get; set; }
         public string Должность { get; set; }
         public string Номер_телефона { get; set; }
