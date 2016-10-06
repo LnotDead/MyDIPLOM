@@ -19,9 +19,14 @@ namespace WebApplication1.Models
         public string Начало_SN { get; set; }
         public string Конец_SN { get; set; }
         public Nullable<int> ID_сотрудника { get; set; }
-        [DataType(DataType.Date)]
+
+        [DataType(DataType.Date, ErrorMessage = "Дата должна быть в формате дд.мм.гггг")]
+        [Display(Name = "Дата начала")]
+        [Required(ErrorMessage = "Выберите дату")]
         public System.DateTime Начало { get; set; }
-        [DataType(DataType.Date)]
+
+        [DataType(DataType.Date, ErrorMessage = "Дата должна быть в формате дд.мм.гггг")]
+        [Display(Name = "Дата завершения")]
         public Nullable<System.DateTime> Завершение { get; set; }
         public string Примечания { get; set; }
 

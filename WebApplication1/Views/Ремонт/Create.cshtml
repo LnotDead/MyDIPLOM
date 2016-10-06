@@ -2,9 +2,10 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h3>@WebApplication1.Models.Strings.Creating</h3>
 
 
 @using (Html.BeginForm())
@@ -12,7 +13,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Ремонт</h4>
+        <h4>Ремонты</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -48,30 +49,43 @@
         });
     })
     </script>
+
+
+        <script type="text/javascript">
+            $("#datepicker1").datepicker($.datepicker.regional["ru"])({ dateFormat: 'dd/mm/yy' })
+        </script>
+        <script type="text/javascript">
+            $("#datepicker2").datepicker($.datepicker.regional["ru"])({ dateFormat: 'dd/mm/yy' })
+        </script>
+
+
 }
 
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ID_сотрудника, "ID_сотрудника", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Сотрудники.ФИО_сотрудника, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("ID_сотрудника", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ID_сотрудника, "", new { @class = "text-danger" })
             </div>
         </div>
 
+
         <div class="form-group">
             @Html.LabelFor(model => model.Начало, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Начало, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Начало, new { htmlAttributes = new { @class = "form-control", @id = "datepicker1" } })
                 @Html.ValidationMessageFor(model => model.Начало, "", new { @class = "text-danger" })
             </div>
         </div>
 
+
+
         <div class="form-group">
             @Html.LabelFor(model => model.Завершение, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Завершение, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Завершение, new { htmlAttributes = new { @class = "form-control", @id = "datepicker2" } })
                 @Html.ValidationMessageFor(model => model.Завершение, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -86,14 +100,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value=@WebApplication1.Models.Strings.Create class="btn btn-default btn-yellow" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
 </div>
 
 

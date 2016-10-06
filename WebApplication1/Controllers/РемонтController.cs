@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
+using System.Text.RegularExpressions;
 
 namespace WebApplication1.Controllers
 {
@@ -49,11 +50,6 @@ namespace WebApplication1.Controllers
         {
             string selectedНачало_SN = (from x in db.Тренажёры select x).OrderBy(z => z.Начало_SN).First().Начало_SN;
 
-
-
-
-            //ViewBag.Начало_SN = new SelectList(db.Тренажёры.OrderBy(z => z.Начало_SN).Distinct(), "Начало_SN", "Начало_SN", selectedНачало_SN);
-
             ViewBag.Начало_SN = new SelectList((from b in db.Тренажёры select b.Начало_SN).Distinct(), selectedНачало_SN);
             ViewBag.Конец_SN = new SelectList(db.Тренажёры.Where(c => c.Начало_SN == selectedНачало_SN).OrderBy(z => z.Конец_SN), "Конец_SN", "Конец_SN");
             ViewBag.ID_сотрудника = new SelectList(db.Сотрудники, "ID_сотрудника", "ФИО_сотрудника");
@@ -67,6 +63,31 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "ID_ремонта,Начало_SN,Конец_SN,ID_сотрудника,Начало,Завершение,Примечания")] Ремонт ремонт)
         {
+            if (ремонт.Начало == null)
+                ModelState.AddModelError("Начало", "Выберите дату начала ремонта");
+            else
+            {
+                if (!ModelState.IsValidField("Начало"))
+                    ModelState.AddModelError("Начало", "Дата должна быть в формате дд.мм.гггг");
+            }
+
+
+            if (ремонт.Завершение != null)
+            {
+                if (!ModelState.IsValidField("Завершение"))
+                    ModelState.AddModelError("Завершение", "Дата должна быть в формате дд.мм.гггг");
+                else
+                {
+                    if (ремонт.Начало > ремонт.Завершение)
+                            ModelState.AddModelError("Завершение", "Дата завершения не может быть раньше даты начала");
+                }
+            }
+
+
+
+
+
+
             if (ModelState.IsValid)
             {
                 db.Ремонт.Add(ремонт);
@@ -74,8 +95,11 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Начало_SN = new SelectList(db.Тренажёры, "Начало_SN", "Примечания", ремонт.Начало_SN);
-            ViewBag.ID_сотрудника = new SelectList(db.Сотрудники, "ID_сотрудника", "ФИО_сотрудника", ремонт.ID_сотрудника);
+            string selectedНачало_SN = (from x in db.Тренажёры select x).OrderBy(z => z.Начало_SN).First().Начало_SN;
+
+            ViewBag.Начало_SN = new SelectList((from b in db.Тренажёры select b.Начало_SN).Distinct(), selectedНачало_SN);
+            ViewBag.Конец_SN = new SelectList(db.Тренажёры.Where(c => c.Начало_SN == selectedНачало_SN).OrderBy(z => z.Конец_SN), "Конец_SN", "Конец_SN");
+            ViewBag.ID_сотрудника = new SelectList(db.Сотрудники, "ID_сотрудника", "ФИО_сотрудника");
             return View(ремонт);
         }
 

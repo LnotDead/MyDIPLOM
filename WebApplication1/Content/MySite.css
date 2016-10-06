@@ -147,3 +147,33 @@ h3 {
   color: #00ef0c;
     font-weight: bold;
 }
+
+.ui-datepicker {
+    background-color: #506069;
+    color: #eeeeee;
+    font-weight: bold;
+    text-align:left;
+    border-collapse: separate;
+    padding: 0.75em;
+
+}
+
+.ui-datepicker-calendar tbody tr:hover {
+    background-color: transparent;
+}
+
+.ui-datepicker-calendar a:hover {
+  color: #00ef0c;
+}
+
+.ui-datepicker-header a:hover{
+       
+   color: #00ef0c;
+
+}
+
+.ui-datepicker-header a.ui-datepicker-next.ui-corner-all {
+          
+     padding-left: 40px;
+
+}
