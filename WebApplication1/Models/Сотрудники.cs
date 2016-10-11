@@ -25,11 +25,16 @@ namespace WebApplication1.Models
         public int ID_сотрудника { get; set; }
 
         [Display(Name = "ФИО сотрудника")]
+        [Required(ErrorMessage = "Введите ФИО сотрудника")]
         public string ФИО_сотрудника { get; set; }
+        [Required(ErrorMessage = "Введите должность сотрудника")]
         public string Должность { get; set; }
+        [Required(ErrorMessage = "Введите номер телефона сотрудника")]
+        [Display(Name = "Номер телефона")]
         public string Номер_телефона { get; set; }
         public string Логин { get; set; }
         public string Пароль { get; set; }
+        [Display(Name = "Статус")]
         public int ID_состояния { get; set; }
         public string Примечания { get; set; }
     
