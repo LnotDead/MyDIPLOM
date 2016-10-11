@@ -55,7 +55,7 @@
             $("#datepicker1").datepicker($.datepicker.regional["ru"])({ dateFormat: 'dd/mm/yy' })
         </script>
         <script type="text/javascript">
-            $("#datepicker2").datepicker($.datepicker.regional["ru"])({ dateFormat: 'dd/mm/yy' })
+            $("#datepicker2").datepicker($.datepicker.regional["ru"])
         </script>
 
 
@@ -76,7 +76,7 @@
             @Html.LabelFor(model => model.Начало, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Начало, new { htmlAttributes = new { @class = "form-control", @id = "datepicker1" } })
-                @Html.ValidationMessageFor(model => model.Начало, "", new { @class = "text-danger" })
+                @Html.ValidationMessage("Начало", "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -86,7 +86,7 @@
             @Html.LabelFor(model => model.Завершение, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Завершение, new { htmlAttributes = new { @class = "form-control", @id = "datepicker2" } })
-                @Html.ValidationMessageFor(model => model.Завершение, "", new { @class = "text-danger" })
+                @Html.ValidationMessage("Завершение", "", new { @class = "text-danger" })
             </div>
         </div>
 

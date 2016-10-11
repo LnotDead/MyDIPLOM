@@ -2,9 +2,11 @@
 
 @{
     ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h3>@WebApplication1.Models.Strings.Editing</h3>
+<br />
 
 
 @using (Html.BeginForm())
@@ -18,42 +20,79 @@
         @Html.HiddenFor(model => model.ID_ремонта)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Начало_SN, "Начало_SN", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Начало_SN", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Начало_SN, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.SN, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownList("Начало_SN", null, new { id = "Начало_SN", @class = "form-control" })
+            </div>
+            <div class="col-md-5">
+                @Html.DropDownList("Конец_SN", ViewBag.Конец_SN as SelectList, new { id = "Конец_SN", @class = "form-control" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Конец_SN, "Конец_SN", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Конец_SN", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Конец_SN, "", new { @class = "text-danger" })
-            </div>
-        </div>
+
+
+@section scripts{
+
+
+
+
+    <script type="text/javascript">
+    $(function () {
+
+        $('#Начало_SN').change(function ()
+        {
+            // получаем выбранный id
+            var id = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetItems")/' + id,
+                success: function (data) {
+
+                                            // заменяем содержимое присланным частичным представлением
+                                            $('#Конец_SN').replaceWith(data);
+                                        }
+            });
+        });
+    })
+    </script>
+
+
+    <script type="text/javascript">
+            $("#datepicker1").datepicker($.datepicker.regional["ru"])({ dateFormat: 'dd/mm/yy' })
+    </script>
+    <script type="text/javascript">
+            $("#datepicker2").datepicker($.datepicker.regional["ru"])({ dateFormat: 'dd/mm/yy' })
+    </script>
+
+}
+
+
+
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ID_сотрудника, "ID_сотрудника", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Сотрудники.ФИО_сотрудника, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("ID_сотрудника", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ID_сотрудника, "", new { @class = "text-danger" })
             </div>
         </div>
 
+
         <div class="form-group">
             @Html.LabelFor(model => model.Начало, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Начало, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Начало, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Начало, new { htmlAttributes = new { @class = "form-control", @id = "datepicker1" } })
+                @Html.ValidationMessage("Начало", "", new { @class = "text-danger" })
             </div>
         </div>
+
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Завершение, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Завершение, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Завершение, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Завершение, new { htmlAttributes = new { @class = "form-control", @id = "datepicker2" } })
+                @Html.ValidationMessage("Завершение", "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -67,16 +106,13 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value=@WebApplication1.Models.Strings.Save class="btn btn-default btn-yellow" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(WebApplication1.Models.Strings.Back_to_list, "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
